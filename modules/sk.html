@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_stack_of_object">Class stack_of_object </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><strong>sk</strong></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>sk</code></h1>
+<p>Provide hmac function in lua.</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#openssl.sk_x509_read">openssl.sk_x509_read (input)</a></td>
+	<td class="summary">read stack_of_x509 from string data or bio input</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#openssl.sk_x509_new">openssl.sk_x509_new (certs)</a></td>
+	<td class="summary">contrust stack_of_x509 from table</td>
+	</tr>
+</table>
+<h2><a href="#Class_stack_of_object">Class stack_of_object </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#stack_of_object:push">stack_of_object:push (obj)</a></td>
+	<td class="summary">push an object into stack</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#stack_of_object:pop">stack_of_object:pop ()</a></td>
+	<td class="summary">pop an object from stack</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#stack_of_object:set">stack_of_object:set (location, object)</a></td>
+	<td class="summary">set object at given location</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#stack_of_object:get">stack_of_object:get (location)</a></td>
+	<td class="summary">get object at given location</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#stack_of_object:insert">stack_of_object:insert (obj, location)</a></td>
+	<td class="summary">insert object at given location</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#stack_of_object:delete">stack_of_object:delete (location)</a></td>
+	<td class="summary">delete object at geiven location</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#stack_of_object:totable">stack_of_object:totable ()</a></td>
+	<td class="summary">convert stack_of_object to table
+ @@treturn table contain object index start from 1</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "openssl.sk_x509_read"></a>
+    <strong>openssl.sk_x509_read (input)</strong>
+    </dt>
+    <dd>
+    read stack_of_x509 from string data or bio input
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bio</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">stack_of_x509</span></span>
+
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/sk.html#stack_of_object">stack_of_object</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "openssl.sk_x509_new"></a>
+    <strong>openssl.sk_x509_new (certs)</strong>
+    </dt>
+    <dd>
+    contrust stack_of_x509 from table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">certs</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         x509 object certs
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">stack_of_x509</span></span>
+
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/sk.html#stack_of_object">stack_of_object</a>
+    </ul>
+
+
+</dd>
+</dl>
+    <h2><a name="Class_stack_of_object"></a>Class stack_of_object </h2>
+
+ stack_of_x509 is an important object in lua-openssl, it can be used as a certchain, trusted CA files or unstrust certs.
+ object not support x509, x509_extension or x509_attribute
+    <dl class="function">
+    <dt>
+    <a name = "stack_of_object:push"></a>
+    <strong>stack_of_object:push (obj)</strong>
+    </dt>
+    <dd>
+    push an object into stack
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+            <span class="types"><span class="type">object</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">stack_of_object</span></span>
+        self
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "stack_of_object:pop"></a>
+    <strong>stack_of_object:pop ()</strong>
+    </dt>
+    <dd>
+    pop an object from stack
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">object</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "stack_of_object:set"></a>
+    <strong>stack_of_object:set (location, object)</strong>
+    </dt>
+    <dd>
+    set object at given location
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">location</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+        <li><span class="parameter">object</span>
+            <span class="types"><span class="type">object</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">stack_of_object</span></span>
+        self
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "stack_of_object:get"></a>
+    <strong>stack_of_object:get (location)</strong>
+    </dt>
+    <dd>
+    get object at given location
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">location</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">object</span></span>
+        obj
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "stack_of_object:insert"></a>
+    <strong>stack_of_object:insert (obj, location)</strong>
+    </dt>
+    <dd>
+    insert object at given location
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+            <span class="types"><span class="type">object</span></span>
+
+        </li>
+        <li><span class="parameter">location</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">stack_of_x509</span></span>
+        self
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "stack_of_object:delete"></a>
+    <strong>stack_of_object:delete (location)</strong>
+    </dt>
+    <dd>
+    delete object at geiven location
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">location</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">object</span></span>
+        deleted object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "stack_of_object:totable"></a>
+    <strong>stack_of_object:totable ()</strong>
+    </dt>
+    <dd>
+    convert stack_of_object to table
+ @@treturn table contain object index start from 1
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

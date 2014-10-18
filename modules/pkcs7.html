@@ -1,0 +1,472 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_pkcs7">Class pkcs7 </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><strong>pkcs7</strong></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>pkcs7</code></h1>
+<p>Provide pkcs7 function in lua.</p>
+<p></p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  pkcs7 = require(&apos;openssl&apos;).pkcs7
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#read">read (input[, allow='auto'], password)</a></td>
+	<td class="summary">read pkcs7
+ read string or bio object, which include pkcs7 content</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#export">export (msg, sigcert, signkey[, cacerts[, msg[, flags=0]]])</a></td>
+	<td class="summary">sign message wight signcert and signpkey to create pkcs7 object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#verify">verify (in[, signercerts[, cacerts[, msg[, flags=0]]]])</a></td>
+	<td class="summary">verify pkcs7 object, and return msg content, follow by singers</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#encrypt">encrypt (msg, recipcerts[, cipher='rc4'[, flags]])</a></td>
+	<td class="summary">encrypt message with recipcerts certificates return encrypted pkcs7 object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#decrypt">decrypt (input, recipcert, recipkey)</a></td>
+	<td class="summary">decrypt encrypted pkcs7 message</td>
+	</tr>
+</table>
+<h2><a href="#Class_pkcs7">Class pkcs7 </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#pkcs7:export">pkcs7:export ([pem=true])</a></td>
+	<td class="summary">export pkcs7 as string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pkcs7:parse">pkcs7:parse ()</a></td>
+	<td class="summary">export pkcs7 as a string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pkcs7:verify">pkcs7:verify ([signercerts[, cacerts[, extracerts[, msg[, flags=0]]]]])</a></td>
+	<td class="summary">verify pkcs7 object, and return msg content, follow by singers</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pkcs7:decrypt">pkcs7:decrypt (recipcert, recipkey)</a></td>
+	<td class="summary">decrypt encrypted pkcs7 message</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "read"></a>
+    <strong>read (input[, allow='auto'], password)</strong>
+    </dt>
+    <dd>
+    read pkcs7
+ read string or bio object, which include pkcs7 content
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><span class="type">bio</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">allow</span>
+            <span class="types"><span class="type">format</span></span>
+         'auto','der','pem','smime'
+         (<em>default</em> 'auto')
+        </li>
+        <li><span class="parameter">password</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         for pkcs12
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="../modules/pkcs7.html#pkcs7">pkcs7</a></span>
+        object or nil</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        content exist only smime format</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "export"></a>
+    <strong>export (msg, sigcert, signkey[, cacerts[, msg[, flags=0]]])</strong>
+    </dt>
+    <dd>
+    sign message wight signcert and signpkey to create pkcs7 object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">sigcert</span>
+            <span class="types"><span class="type">x509</span></span>
+
+        </li>
+        <li><span class="parameter">signkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+
+        </li>
+        <li><span class="parameter">cacerts</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/pkcs7.html#pkcs7">pkcs7</a></span>
+        object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "verify"></a>
+    <strong>verify (in[, signercerts[, cacerts[, msg[, flags=0]]]])</strong>
+    </dt>
+    <dd>
+    verify pkcs7 object, and return msg content, follow by singers
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">in</span>
+            <span class="types"><a class="type" href="../modules/pkcs7.html#pkcs7">pkcs7</a></span>
+
+        </li>
+        <li><span class="parameter">signercerts</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+        <li><span class="parameter">cacerts</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        content</li>
+        <li>
+           <span class="types"><span class="type">stack_of_x509</span></span>
+        signers</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "encrypt"></a>
+    <strong>encrypt (msg, recipcerts[, cipher='rc4'[, flags]])</strong>
+    </dt>
+    <dd>
+    encrypt message with recipcerts certificates return encrypted pkcs7 object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">recipcerts</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+        <li><span class="parameter">cipher</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">evp_cipher</span></span>
+
+         (<em>default</em> 'rc4')
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "decrypt"></a>
+    <strong>decrypt (input, recipcert, recipkey)</strong>
+    </dt>
+    <dd>
+    decrypt encrypted pkcs7 message
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><a class="type" href="../modules/pkcs7.html#pkcs7">pkcs7</a></span>
+
+        </li>
+        <li><span class="parameter">recipcert</span>
+            <span class="types"><span class="type">x509</span></span>
+
+        </li>
+        <li><span class="parameter">recipkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        decrypt message
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_pkcs7"></a>Class pkcs7 </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "pkcs7:export"></a>
+    <strong>pkcs7:export ([pem=true])</strong>
+    </dt>
+    <dd>
+    export pkcs7 as string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pem</span>
+            <span class="types"><span class="type">boolean</span></span>
+         default export as pem format, false export as der string
+         (<em>default</em> true)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pkcs7:parse"></a>
+    <strong>pkcs7:parse ()</strong>
+    </dt>
+    <dd>
+    export pkcs7 as a string
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        a table has pkcs7 infomation, include type,and other things relate to types
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pkcs7:verify"></a>
+    <strong>pkcs7:verify ([signercerts[, cacerts[, extracerts[, msg[, flags=0]]]]])</strong>
+    </dt>
+    <dd>
+    verify pkcs7 object, and return msg content, follow by singers
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">signercerts</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+        <li><span class="parameter">cacerts</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+        <li><span class="parameter">extracerts</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        content</li>
+        <li>
+           <span class="types"><span class="type">stack_of_x509</span></span>
+        signers</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pkcs7:decrypt"></a>
+    <strong>pkcs7:decrypt (recipcert, recipkey)</strong>
+    </dt>
+    <dd>
+    decrypt encrypted pkcs7 message
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">recipcert</span>
+            <span class="types"><span class="type">x509</span></span>
+
+        </li>
+        <li><span class="parameter">recipkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        decrypt message
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

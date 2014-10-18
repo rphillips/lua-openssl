@@ -1,0 +1,568 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+<li><a href="#Class_x509_extension">Class x509_extension </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><strong>x509.extension</strong></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>x509.extension</code></h1>
+<p>Provide x509_extension as lua object.</p>
+<p>
+ Sometime when you make CSR,TS or X509, you maybe need to use this.
+</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  extension = require(&apos;openssl&apos;).x509.extension
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#new_extension">new_extension (extension)</a></td>
+	<td class="summary">Create x509_extension object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#read_extension">read_extension (data)</a></td>
+	<td class="summary">read der encoded x509_extension</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#new_sk_extension">new_sk_extension (node_array)</a></td>
+	<td class="summary">Create stack_of_x509_extension object, which mapping to STACK_OF(X509_EXTENSION)</td>
+	</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#x509_extension_param_table">x509_extension_param_table</a></td>
+	<td class="summary">x509_extension contrust param table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_extension_info_table">x509_extension_info_table</a></td>
+	<td class="summary">x509_extension infomation table
+ other field is number type, and value table is alter name.(I not understand clearly)</td>
+	</tr>
+</table>
+<h2><a href="#Class_x509_extension">Class x509_extension </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#x509_extension:info">x509_extension:info ([true])</a></td>
+	<td class="summary">get infomation table of x509_extension.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_extension:dup">x509_extension:dup ()</a></td>
+	<td class="summary">clone then x509_extension</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_extension:critical">x509_extension:critical ()</a></td>
+	<td class="summary">get critical of x509_extension.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_extension:critical">x509_extension:critical (critical)</a></td>
+	<td class="summary">set critical of x509_extension.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_extension:object">x509_extension:object ()</a></td>
+	<td class="summary">get asn1_object of x509_extension.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_extension:object">x509_extension:object (obj)</a></td>
+	<td class="summary">set asn1_object for x509_extension.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_extension:data">x509_extension:data ()</a></td>
+	<td class="summary">get data of x509_extension</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_extension:data">x509_extension:data (data)</a></td>
+	<td class="summary">set type of x509_extension</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_extension:export">x509_extension:export ()</a></td>
+	<td class="summary">export x509_extenion to der encoded string</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "new_extension"></a>
+    <strong>new_extension (extension)</strong>
+    </dt>
+    <dd>
+    Create x509_extension object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">extension</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         with object, value and critical
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_extension</span></span>
+        mapping to X509_EXTENSION in openssl
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/x509.extension.html#x509_extension_param_table">x509_extension_param_table</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "read_extension"></a>
+    <strong>read_extension (data)</strong>
+    </dt>
+    <dd>
+    read der encoded x509_extension
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         der encoded
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_extension</span></span>
+        mappling to X509_EXTENSION in openssl
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "new_sk_extension"></a>
+    <strong>new_sk_extension (node_array)</strong>
+    </dt>
+    <dd>
+    Create stack_of_x509_extension object, which mapping to STACK_OF(X509_EXTENSION)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">node_array</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        , each node is a x509_extension node
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">sk_x509_extension</span></span>
+        mapping to STACK_OF(X509_EXTENSION) in openssl
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <li><a href="../modules/x509.extension.html#new_extension">new_extension</a></li>
+         <li><a href="../modules/sk.html#">sk</a></li>
+    </ul>
+
+
+</dd>
+</dl>
+    <h2><a name="Tables"></a>Tables</h2>
+    <dl class="function">
+    <dt>
+    <a name = "x509_extension_param_table"></a>
+    <strong>x509_extension_param_table</strong>
+    </dt>
+    <dd>
+    x509_extension contrust param table.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">critical</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true set critical
+        </li>
+        <li><span class="parameter">value</span>
+            <span class="types"><span class="type">asn1_string</span></span>
+         of x509_extension
+        </li>
+        <li><span class="parameter">object</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">asn1_object</span></span>
+        , object of extension
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+ xattr = x509.attr.new_extension {
+   object = asn1_object,
+   critical = <span class="keyword">false</span>,
+   value = <span class="global">string</span> <span class="keyword">or</span> asn1_string value
+ }</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "x509_extension_info_table"></a>
+    <strong>x509_extension_info_table</strong>
+    </dt>
+    <dd>
+    x509_extension infomation table
+ other field is number type, and value table is alter name.(I not understand clearly)
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">object</span>
+            <span class="types"><span class="type">asn1_object</span> or <a class="type" href="../modules/x509.extension.html#x509_extension:object">object</a></span>
+         of x509_extension
+        </li>
+        <li><span class="parameter">true</span>
+            <span class="types"><span class="type">boolean</span> or <a class="type" href="../modules/x509.extension.html#x509_extension:critical">critical</a></span>
+         for critical value
+        </li>
+        <li><span class="parameter">as</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">value</span></span>
+         octet string
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_x509_extension"></a>Class x509_extension </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "x509_extension:info"></a>
+    <strong>x509_extension:info ([true])</strong>
+    </dt>
+    <dd>
+    get infomation table of x509_extension.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">true</span>
+            <span class="types"><span class="type">boolean</span> or <span class="type">utf8</span></span>
+         for utf8 default
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        info,  x509_extension infomation as table
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/x509.extension.html#x509_extension_info_table">x509_extension_info_table</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "x509_extension:dup"></a>
+    <strong>x509_extension:dup ()</strong>
+    </dt>
+    <dd>
+    clone then x509_extension
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_extension</span></span>
+        attr clone of x509_extension
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_extension:critical"></a>
+    <strong>x509_extension:critical ()</strong>
+    </dt>
+    <dd>
+    get critical of x509_extension.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if extension set critical or false
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_extension:critical"></a>
+    <strong>x509_extension:critical (critical)</strong>
+    </dt>
+    <dd>
+    set critical of x509_extension.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">critical</span>
+            <span class="types"><span class="type">boolean</span></span>
+         set to self
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        set critical success return true
+    </ol>
+     <h3>Or</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">nil</span></span>
+        nil, fail return nothing</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        errmsg reason of fail</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_extension:object"></a>
+    <strong>x509_extension:object ()</strong>
+    </dt>
+    <dd>
+    get asn1_object of x509_extension.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">asn1_object</span></span>
+        object of x509_extension
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_extension:object"></a>
+    <strong>x509_extension:object (obj)</strong>
+    </dt>
+    <dd>
+    set asn1_object for x509_extension.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+            <span class="types"><span class="type">asn1_object</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true for success
+    </ol>
+     <h3>Or</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">nil</span></span>
+        nil when occure error</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        errmsg error message</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_extension:data"></a>
+    <strong>x509_extension:data ()</strong>
+    </dt>
+    <dd>
+    get data of x509_extension
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">asn1_string</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_extension:data"></a>
+    <strong>x509_extension:data (data)</strong>
+    </dt>
+    <dd>
+    set type of x509_extension
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><span class="type">asn1_string</span></span>
+         set to self
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true for success
+    </ol>
+     <h3>Or</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">nil</span></span>
+        nil when occure error</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        errmsg error message</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_extension:export"></a>
+    <strong>x509_extension:export ()</strong>
+    </dt>
+    <dd>
+    export x509_extenion to der encoded string
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -1,0 +1,768 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><strong>cms</strong></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>cms</code></h1>
+<p>Provide cms function in lua.</p>
+<p>
+ cms are based on apps/cms.c from the OpenSSL dist, so for more information, see the documentation for OpenSSL.
+ cms api need flags, not support "detached", "nodetached", "text", "nointern", "noverify", "nochain", "nocerts",
+ "noattr", "binary", "nosigs"
+<p> Decrypts the S/MIME message in the BIO object and output the results to BIO object.
+ recipcert is a CERT for one of the recipients. recipkey specifies the private key matching recipcert.
+ Headers is an array of headers to prepend to the message, they will not be included in the encoded section.
+</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  cms = require(&apos;openssl&apos;).cms
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#create">create ()</a></td>
+	<td class="summary">create cms object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#create">create (input[, flags=0])</a></td>
+	<td class="summary">read cms object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#create">create (input, md_alg[, flags=0])</a></td>
+	<td class="summary">create digest cms object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#encrypt">encrypt (recipt, input, cipher_alg[, flags=0[, options=nil]])</a></td>
+	<td class="summary">encrypt with recipt certs</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#decrypt">decrypt (message, pkey, recipt, dcount, out[, flags=0[, options=nil]])</a></td>
+	<td class="summary">decrypt cms message</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sign">sign (cert, pkey, input_data[, flags=0])</a></td>
+	<td class="summary">make signed cms object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#verify">verify (signed, verify_mode, singers, message, out[, flags=0])</a></td>
+	<td class="summary">verfiy signed cms object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#verify">verify (digested, verify_mode, input, out[, flags=0])</a></td>
+	<td class="summary">verify digest cms object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#verify">verify (cms, verify_mode, source, certs, store[, flags=0])</a></td>
+	<td class="summary">verify receipt cms object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#read">read (input[, format='auto'[, content=nil]])</a></td>
+	<td class="summary">read cms object from input bio or string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#write">write (cms, out, in[, flags=0[, format='smime']])</a></td>
+	<td class="summary">write cms object to bio object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#compress">compress (input, alg[, flags=0])</a></td>
+	<td class="summary">create compress cms object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#uncompress">uncompress (cms, input, out[, flags=0])</a></td>
+	<td class="summary">uncompress cms object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#EncryptedData_encrypt">EncryptedData_encrypt (input, cipher_alg, key[, flags=0])</a></td>
+	<td class="summary">create enryptdata cms</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#EncryptedData_decrypt">EncryptedData_decrypt (encrypted, key, out[, flags=0])</a></td>
+	<td class="summary">decrypt encryptdata cms</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "create"></a>
+    <strong>create ()</strong>
+    </dt>
+    <dd>
+    create cms object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">cms</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "create"></a>
+    <strong>create (input[, flags=0])</strong>
+    </dt>
+    <dd>
+    read cms object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">cms</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "create"></a>
+    <strong>create (input, md_alg[, flags=0])</strong>
+    </dt>
+    <dd>
+    create digest cms object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><span class="type">evp_digest</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">cms</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "encrypt"></a>
+    <strong>encrypt (recipt, input, cipher_alg[, flags=0[, options=nil]])</strong>
+    </dt>
+    <dd>
+    encrypt with recipt certs
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">recipt</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+         certs
+        </li>
+        <li><span class="parameter">input</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">cipher_alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">evp_cipher</span></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        , may have key,keyid, password field which must be string type
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">cms</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "decrypt"></a>
+    <strong>decrypt (message, pkey, recipt, dcount, out[, flags=0[, options=nil]])</strong>
+    </dt>
+    <dd>
+    decrypt cms message
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+            <span class="types"><span class="type">cms</span></span>
+
+        </li>
+        <li><span class="parameter">pkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+
+        </li>
+        <li><span class="parameter">recipt</span>
+            <span class="types"><span class="type">x509</span></span>
+
+        </li>
+        <li><span class="parameter">dcount</span>
+            <span class="types"><span class="type">bio</span></span>
+         output object
+        </li>
+        <li><span class="parameter">out</span>
+            <span class="types"><span class="type">bio</span></span>
+         output object
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         may have key, keyid, password field, which must be string type
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "sign"></a>
+    <strong>sign (cert, pkey, input_data[, flags=0])</strong>
+    </dt>
+    <dd>
+    make signed cms object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cert</span>
+            <span class="types"><span class="type">x509</span></span>
+
+        </li>
+        <li><span class="parameter">pkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+
+        </li>
+        <li><span class="parameter">input_data</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">cms</span></span>
+        object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "verify"></a>
+    <strong>verify (signed, verify_mode, singers, message, out[, flags=0])</strong>
+    </dt>
+    <dd>
+    verfiy signed cms object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">signed</span>
+            <span class="types"><span class="type">cms</span></span>
+
+        </li>
+        <li><span class="parameter">verify_mode</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , must be 'verify'
+        </li>
+        <li><span class="parameter">singers</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+        <li><span class="parameter">message</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">out</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "verify"></a>
+    <strong>verify (digested, verify_mode, input, out[, flags=0])</strong>
+    </dt>
+    <dd>
+    verify digest cms object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">digested</span>
+            <span class="types"><span class="type">cms</span></span>
+
+        </li>
+        <li><span class="parameter">verify_mode</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , must be 'digest'
+        </li>
+        <li><span class="parameter">input</span>
+            <span class="types"><span class="type">bio</span></span>
+         message
+        </li>
+        <li><span class="parameter">out</span>
+            <span class="types"><span class="type">bio</span></span>
+         content
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "verify"></a>
+    <strong>verify (cms, verify_mode, source, certs, store[, flags=0])</strong>
+    </dt>
+    <dd>
+    verify receipt cms object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cms</span>
+            <span class="types"><span class="type">cms</span></span>
+
+        </li>
+        <li><span class="parameter">verify_mode</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         must be 'receipt'
+        </li>
+        <li><span class="parameter">source</span>
+            <span class="types"><span class="type">cms</span></span>
+
+        </li>
+        <li><span class="parameter">certs</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+        <li><span class="parameter">store</span>
+            <span class="types"><span class="type">x509_store</span></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "read"></a>
+    <strong>read (input[, format='auto'[, content=nil]])</strong>
+    </dt>
+    <dd>
+    read cms object from input bio or string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><span class="type">bio</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">format</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , support 'auto','smime','der','pem'
+         (<em>default</em> 'auto')
+        </li>
+        <li><span class="parameter">content</span>
+            <span class="types"><span class="type">bio</span></span>
+        , only used when format is 'smime'
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">cms</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "write"></a>
+    <strong>write (cms, out, in[, flags=0[, format='smime']])</strong>
+    </dt>
+    <dd>
+    write cms object to bio object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cms</span>
+            <span class="types"><span class="type">cms</span></span>
+
+        </li>
+        <li><span class="parameter">out</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">in</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+        <li><span class="parameter">format</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+         (<em>default</em> 'smime')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "compress"></a>
+    <strong>compress (input, alg[, flags=0])</strong>
+    </dt>
+    <dd>
+    create compress cms object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , zlib or rle
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">cms</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "uncompress"></a>
+    <strong>uncompress (cms, input, out[, flags=0])</strong>
+    </dt>
+    <dd>
+    uncompress cms object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cms</span>
+            <span class="types"><span class="type">cms</span></span>
+
+        </li>
+        <li><span class="parameter">input</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">out</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "EncryptedData_encrypt"></a>
+    <strong>EncryptedData_encrypt (input, cipher_alg, key[, flags=0])</strong>
+    </dt>
+    <dd>
+    create enryptdata cms
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">cipher_alg</span>
+            <span class="types"><span class="type">cipher</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><span class="type">strig</span></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">cms</span></span>
+        object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "EncryptedData_decrypt"></a>
+    <strong>EncryptedData_decrypt (encrypted, key, out[, flags=0])</strong>
+    </dt>
+    <dd>
+    decrypt encryptdata cms
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">encrypted</span>
+            <span class="types"><span class="type">cms</span></span>
+
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">out</span>
+            <span class="types"><span class="type">bio</span></span>
+
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

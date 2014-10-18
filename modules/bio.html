@@ -1,0 +1,797 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_bio">Class bio </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><strong>bio</strong></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>bio</code></h1>
+<p>openssl.bio module.</p>
+<p>
+ bio object mapping to BIO in openssl
+ openssl.bio is a help object, it is useful, but rarely use.</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">bio = require&apos;openssl&apos;.bio</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#openssl.bio">openssl.bio ([data=nil])</a></td>
+	<td class="summary">make string as bio object
+ same with bio.mem, implication by metatable '__call'</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mem">mem ([data=nil])</a></td>
+	<td class="summary">make string as bio object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#socket">socket (fd[, support='noclose'])</a></td>
+	<td class="summary">make tcp bio from socket fd</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dgram">dgram (fd[, support='noclose'])</a></td>
+	<td class="summary">make dgram bio from socket fd</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fd">fd (fd[, support='noclose'])</a></td>
+	<td class="summary">make socket or file bio with fd</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file">file (file[, mode='r'])</a></td>
+	<td class="summary">make file object with file name or path</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#connect">connect (host_addr[, connect=true])</a></td>
+	<td class="summary">make tcp client socket</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#accept">accept (host_port)</a></td>
+	<td class="summary">make tcp listen socket</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#filter">filter (mode)</a></td>
+	<td class="summary">Create base64 or buffer bio, which can append to an io BIO object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#filter">filter (mode, md_alg)</a></td>
+	<td class="summary">Create digest bio, which can append to an io BIO object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#filter">filter (mode, s[, support='noclose'])</a></td>
+	<td class="summary">Create ssl bio</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#filter">filter (mode, key, iv[, encrypt=true])</a></td>
+	<td class="summary">create cipher filter bio object</td>
+	</tr>
+</table>
+<h2><a href="#Class_bio">Class bio </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#bio:read">bio:read (len)</a></td>
+	<td class="summary">read data from bio object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#bio:gets">bio:gets ([max=256])</a></td>
+	<td class="summary">get line from bio object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#bio:write">bio:write (data)</a></td>
+	<td class="summary">write data to bio object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#bio:puts">bio:puts (data)</a></td>
+	<td class="summary">put line to bio object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#bio:get_mem">bio:get_mem ()</a></td>
+	<td class="summary">get mem data, only support mem bio object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#bio:push">bio:push (append)</a></td>
+	<td class="summary">push bio append to chain of bio, if want to free a chain use free_all()</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#bio:pop">bio:pop (toremove)</a></td>
+	<td class="summary">remove bio from chain</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#bio:free_all">bio:free_all ()</a></td>
+	<td class="summary">free a chain</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#bio:close">bio:close ()</a></td>
+	<td class="summary">close bio</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#bio:type">bio:type ()</a></td>
+	<td class="summary">get type of bio</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "openssl.bio"></a>
+    <strong>openssl.bio ([data=nil])</strong>
+    </dt>
+    <dd>
+    make string as bio object
+ same with bio.mem, implication by metatable '__call'
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "mem"></a>
+    <strong>mem ([data=nil])</strong>
+    </dt>
+    <dd>
+    make string as bio object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , it will be memory buffer data
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+        it can be input or output object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "socket"></a>
+    <strong>socket (fd[, support='noclose'])</strong>
+    </dt>
+    <dd>
+    make tcp bio from socket fd
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fd</span>
+            <span class="types"><span class="type">number</span></span>
+
+        </li>
+        <li><span class="parameter">support</span>
+            <span class="types"><span class="type">flag</span></span>
+         'close' or 'noclose' when close or gc
+         (<em>default</em> 'noclose')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dgram"></a>
+    <strong>dgram (fd[, support='noclose'])</strong>
+    </dt>
+    <dd>
+    make dgram bio from socket fd
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fd</span>
+            <span class="types"><span class="type">number</span></span>
+
+        </li>
+        <li><span class="parameter">support</span>
+            <span class="types"><span class="type">flag</span></span>
+         'close' or 'noclose' when close or gc
+         (<em>default</em> 'noclose')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fd"></a>
+    <strong>fd (fd[, support='noclose'])</strong>
+    </dt>
+    <dd>
+    make socket or file bio with fd
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fd</span>
+            <span class="types"><span class="type">number</span></span>
+
+        </li>
+        <li><span class="parameter">support</span>
+            <span class="types"><span class="type">flag</span></span>
+         'close' or 'noclose' when close or gc
+         (<em>default</em> 'noclose')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file"></a>
+    <strong>file (file[, mode='r'])</strong>
+    </dt>
+    <dd>
+    make file object with file name or path
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">file</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+         (<em>default</em> 'r')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "connect"></a>
+    <strong>connect (host_addr[, connect=true])</strong>
+    </dt>
+    <dd>
+    make tcp client socket
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">host_addr</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         addrees like 'host:port'
+        </li>
+        <li><span class="parameter">connect</span>
+            <span class="types"><span class="type">boolean</span></span>
+         default connect immediately
+         (<em>default</em> true)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "accept"></a>
+    <strong>accept (host_port)</strong>
+    </dt>
+    <dd>
+    make tcp listen socket
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">host_port</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         address like 'host:port'
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "filter"></a>
+    <strong>filter (mode)</strong>
+    </dt>
+    <dd>
+    Create base64 or buffer bio, which can append to an io BIO object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         support 'base64' or 'buffer'
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "filter"></a>
+    <strong>filter (mode, md_alg)</strong>
+    </dt>
+    <dd>
+    Create digest bio, which can append to an io BIO object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         must be 'digest'
+        </li>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><span class="type">evp_md</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "filter"></a>
+    <strong>filter (mode, s[, support='noclose'])</strong>
+    </dt>
+    <dd>
+    Create ssl bio
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         must be 'ssl'
+        </li>
+        <li><span class="parameter">s</span>
+            <span class="types"><span class="type">ssl</span></span>
+
+        </li>
+        <li><span class="parameter">support</span>
+            <span class="types"><span class="type">flag</span></span>
+         'close' or 'noclose' when close or gc
+         (<em>default</em> 'noclose')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "filter"></a>
+    <strong>filter (mode, key, iv[, encrypt=true])</strong>
+    </dt>
+    <dd>
+    create cipher filter bio object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         must be 'cipher'
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">encrypt</span>
+            <span class="types"><span class="type">boolean</span></span>
+
+         (<em>default</em> true)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_bio"></a>Class bio </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "bio:read"></a>
+    <strong>bio:read (len)</strong>
+    </dt>
+    <dd>
+    read data from bio object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">len</span>
+            <span class="types"><span class="type">number</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        string length may be less than param len
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "bio:gets"></a>
+    <strong>bio:gets ([max=256])</strong>
+    </dt>
+    <dd>
+    get line from bio object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">max</span>
+            <span class="types"><span class="type">number</span></span>
+         line len
+         (<em>default</em> 256)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        string length may be less than param len
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "bio:write"></a>
+    <strong>bio:write (data)</strong>
+    </dt>
+    <dd>
+    write data to bio object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        length success write
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "bio:puts"></a>
+    <strong>bio:puts (data)</strong>
+    </dt>
+    <dd>
+    put line to bio object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        length success write
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "bio:get_mem"></a>
+    <strong>bio:get_mem ()</strong>
+    </dt>
+    <dd>
+    get mem data, only support mem bio object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "bio:push"></a>
+    <strong>bio:push (append)</strong>
+    </dt>
+    <dd>
+    push bio append to chain of bio, if want to free a chain use free_all()
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">append</span>
+            <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "bio:pop"></a>
+    <strong>bio:pop (toremove)</strong>
+    </dt>
+    <dd>
+    remove bio from chain
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">toremove</span>
+            <span class="types"><a class="type" href="../modules/bio.html#bio">bio</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "bio:free_all"></a>
+    <strong>bio:free_all ()</strong>
+    </dt>
+    <dd>
+    free a chain
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "bio:close"></a>
+    <strong>bio:close ()</strong>
+    </dt>
+    <dd>
+    close bio
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "bio:type"></a>
+    <strong>bio:type ()</strong>
+    </dt>
+    <dd>
+    get type of bio
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

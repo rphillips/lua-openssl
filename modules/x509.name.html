@@ -1,0 +1,557 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_x509_name">Class x509_name </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><strong>x509.name</strong></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>x509.name</code></h1>
+<p>Provide x509_name as lua object.</p>
+<p>
+ Sometime when you make CSR,TS or X509, you maybe need to use this.
+</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  name = require(&apos;openssl&apos;).x509.name
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#new">new (array[, utf8])</a></td>
+	<td class="summary">Create x509_name object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#d2i">d2i (content)</a></td>
+	<td class="summary">Create x509_name from der string</td>
+	</tr>
+</table>
+<h2><a href="#Class_x509_name">Class x509_name </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#x509_name:oneline">x509_name:oneline ()</a></td>
+	<td class="summary">as oneline of x509_name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_name:hash">x509_name:hash ()</a></td>
+	<td class="summary">get hash code of x509_name</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_name:digest">x509_name:digest (md)</a></td>
+	<td class="summary">get digest of x509_name</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_name:print">x509_name:print (out[, indent[, flags]])</a></td>
+	<td class="summary">print x509_name to bio object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_name:info">x509_name:info (utf8)</a></td>
+	<td class="summary">return x509_name as table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_name:cmp">x509_name:cmp (another)</a></td>
+	<td class="summary">compare two x509_name</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_name:i2d">x509_name:i2d ()</a></td>
+	<td class="summary">get DER encoded string of x509_name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_name:entry_count">x509_name:entry_count ()</a></td>
+	<td class="summary">get count in x509_name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_name:get_text">x509_name:get_text (identid)</a></td>
+	<td class="summary">get text by given asn1_object or nid</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_name:get_index">x509_name:get_index ()</a></td>
+	<td class="summary">get index by give asn1_object or nid</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_name:add_entry">x509_name:add_entry (identid, data[, utf8])</a></td>
+	<td class="summary">add name entry</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_name:delete_entry">x509_name:delete_entry (location)</a></td>
+	<td class="summary">get index by give asn1_object or nid</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "new"></a>
+    <strong>new (array[, utf8])</strong>
+    </dt>
+    <dd>
+    Create x509_name object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">array</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         include name node
+        </li>
+        <li><span class="parameter">utf8</span>
+            <span class="types"><span class="type">boolean</span></span>
+         encode will be use default
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_name</span></span>
+        mapping to X509_EXTENSION in openssl
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  name = <span class="global">require</span><span class="string">'openssl'</span>.x509.name
+  subject = name.new{
+    {C=<span class="string">'CN'</span>},
+    {O=<span class="string">'kkhub.com'</span>},
+    {CN=<span class="string">'zhaozg'</span>}
+  }</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "d2i"></a>
+    <strong>d2i (content)</strong>
+    </dt>
+    <dd>
+    Create x509_name from der string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">content</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         DER encoded string
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_name</span></span>
+        mapping to X509_NAME in openssl
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_x509_name"></a>Class x509_name </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "x509_name:oneline"></a>
+    <strong>x509_name:oneline ()</strong>
+    </dt>
+    <dd>
+    as oneline of x509_name.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        line, name as oneline text
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_name:hash"></a>
+    <strong>x509_name:hash ()</strong>
+    </dt>
+    <dd>
+    get hash code of x509_name
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">integer</span></span>
+        hash hash code of x509_name
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_name:digest"></a>
+    <strong>x509_name:digest (md)</strong>
+    </dt>
+    <dd>
+    get digest of x509_name
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">md</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">nid</span> or <span class="type">openssl.evp_md</span></span>
+         method of digest
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        digest digest value by given alg of x509_name
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_name:print"></a>
+    <strong>x509_name:print (out[, indent[, flags]])</strong>
+    </dt>
+    <dd>
+    print x509_name to bio object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">out</span>
+            <span class="types"><span class="type">openssl.bio</span></span>
+         output bio object
+        </li>
+        <li><span class="parameter">indent</span>
+            <span class="types"><span class="type">integer</span></span>
+         for output
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">integer</span></span>
+         for output
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result, follow by error message
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_name:info"></a>
+    <strong>x509_name:info (utf8)</strong>
+    </dt>
+    <dd>
+    return x509_name as table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">utf8</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for utf8 encoded string, default
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        names
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/x509.name.html#new">new</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "x509_name:cmp"></a>
+    <strong>x509_name:cmp (another)</strong>
+    </dt>
+    <dd>
+    compare two x509_name
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">another</span>
+            <span class="types"><span class="type">x509_name</span></span>
+         to compare with
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for equal or false
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+
+  name1 = name.new({...})
+  name2 = name1:dup()
+  <span class="global">assert</span>(name1:cmp(name2)==(name1==name2))</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "x509_name:i2d"></a>
+    <strong>x509_name:i2d ()</strong>
+    </dt>
+    <dd>
+    get DER encoded string of x509_name.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        der
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_name:entry_count"></a>
+    <strong>x509_name:entry_count ()</strong>
+    </dt>
+    <dd>
+    get count in x509_name.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">integer</span></span>
+        count of x509_name
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_name:get_text"></a>
+    <strong>x509_name:get_text (identid)</strong>
+    </dt>
+    <dd>
+    get text by given asn1_object or nid
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">identid</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         for asn1_object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_name:get_index"></a>
+    <strong>x509_name:get_index ()</strong>
+    </dt>
+    <dd>
+    get index by give asn1_object or nid
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">integer</span></span>
+        location start from 0
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_name:add_entry"></a>
+    <strong>x509_name:add_entry (identid, data[, utf8])</strong>
+    </dt>
+    <dd>
+    add name entry
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">identid</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         for asn1_object
+        </li>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to add
+        </li>
+        <li><span class="parameter">utf8</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for use utf8 default
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for success or follow by error message
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_name:delete_entry"></a>
+    <strong>x509_name:delete_entry (location)</strong>
+    </dt>
+    <dd>
+    get index by give asn1_object or nid
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">location</span>
+            <span class="types"><span class="type">integer</span></span>
+         which name entry to delete
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">asn1_object</span></span>
+        object that delete name entry</li>
+        <li>
+           <span class="types"><span class="type">asn1_string</span></span>
+        value that delete name entry</li>
+    </ol>
+     <h3>Or</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+        delete nothing
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

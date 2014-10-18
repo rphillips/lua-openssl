@@ -1,0 +1,987 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_evp_cipher">Class evp_cipher </a></li>
+<li><a href="#Class_evp_cipher_ctx">Class evp_cipher_ctx </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><strong>cipher</strong></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>cipher</code></h1>
+<p>Provide cipher function in lua.</p>
+<p></p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  cipher = require(&apos;openssl&apos;).cipher
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#list">list ([alias])</a></td>
+	<td class="summary">list all support cipher algs</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get">get (alg)</a></td>
+	<td class="summary">get evp_cipher object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#new">new (alg, encrypt, key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">get evp_cipher_ctx object for encrypt or decrypt</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#encrypt_new">encrypt_new (alg, key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">get evp_cipher_ctx object for encrypt</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#decrypt_new">decrypt_new (alg, key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">get evp_cipher_ctx object for decrypt</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#cipher">cipher (alg, encrypt, input, key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">quick encrypt or decrypt</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#openssl.cipher">openssl.cipher (alg, encrypt, input, key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">quick encrypt or decrypt,alias to cipher</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#encrypt">encrypt (alg, input, key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">quick encrypt</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#decrypt">decrypt (alg, input, key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">quick decrypt</td>
+	</tr>
+</table>
+<h2><a href="#Class_evp_cipher">Class evp_cipher </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#evp_cipher:info">evp_cipher:info ()</a></td>
+	<td class="summary">get infomation of evp_cipher object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_cipher:BytesToKey">evp_cipher:BytesToKey (data, string, md)</a></td>
+	<td class="summary">derive key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_cipher:cipher">evp_cipher:cipher (encrypt, input, key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">do encrypt or decrypt</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_cipher:encrypt">evp_cipher:encrypt (input, key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">do encrypt</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_cipher:decrypt">evp_cipher:decrypt (input, key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">do decrypt</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_cipher:new">evp_cipher:new (encrypt, key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">get evp_cipher_ctx to encrypt or decrypt</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_cipher:encrypt_new">evp_cipher:encrypt_new (key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">get evp_cipher_ctx to encrypt</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_cipher:decrypt_new">evp_cipher:decrypt_new (encrypt, key[, iv[, pad[, engine]]])</a></td>
+	<td class="summary">get evp_cipher_ctx to decrypt</td>
+	</tr>
+</table>
+<h2><a href="#Class_evp_cipher_ctx">Class evp_cipher_ctx </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#evp_cipher_ctx:info">evp_cipher_ctx:info ()</a></td>
+	<td class="summary">get infomation of evp_cipher_ctx object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_cipher_ctx:update">evp_cipher_ctx:update (msg)</a></td>
+	<td class="summary">feed data to do cipher</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_cipher_ctx:final">evp_cipher_ctx:final ()</a></td>
+	<td class="summary">get result of cipher</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "list"></a>
+    <strong>list ([alias])</strong>
+    </dt>
+    <dd>
+    list all support cipher algs
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alias</span>
+            <span class="types"><span class="type">boolean</span></span>
+         include alias names for cipher alg, default true
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">all</span></span>
+        cipher methods
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get"></a>
+    <strong>get (alg)</strong>
+    </dt>
+    <dd>
+    get evp_cipher object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_cipher</span></span>
+        cipher object mapping EVP_MD in openssl
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/cipher.html#evp_cipher">evp_cipher</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "new"></a>
+    <strong>new (alg, encrypt, key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    get evp_cipher_ctx object for encrypt or decrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+        <li><span class="parameter">encrypt</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for encrypt,false for decrypt
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_cipher_ctx</span></span>
+        cipher object mapping EVP_CIPHER_CTX in openssl
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/cipher.html#evp_cipher_ctx">evp_cipher_ctx</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "encrypt_new"></a>
+    <strong>encrypt_new (alg, key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    get evp_cipher_ctx object for encrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_cipher_ctx</span></span>
+        cipher object mapping EVP_CIPHER_CTX in openssl
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/cipher.html#evp_cipher_ctx">evp_cipher_ctx</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "decrypt_new"></a>
+    <strong>decrypt_new (alg, key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    get evp_cipher_ctx object for decrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_cipher_ctx</span></span>
+        cipher object mapping EVP_CIPHER_CTX in openssl
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/cipher.html#evp_cipher_ctx">evp_cipher_ctx</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "cipher"></a>
+    <strong>cipher (alg, encrypt, input, key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    quick encrypt or decrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+        <li><span class="parameter">encrypt</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for encrypt,false for decrypt
+        </li>
+        <li><span class="parameter">input</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to encrypt or decrypt
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "openssl.cipher"></a>
+    <strong>openssl.cipher (alg, encrypt, input, key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    quick encrypt or decrypt,alias to cipher
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+        <li><span class="parameter">encrypt</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for encrypt,false for decrypt
+        </li>
+        <li><span class="parameter">input</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to encrypt or decrypt
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "encrypt"></a>
+    <strong>encrypt (alg, input, key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    quick encrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+        <li><span class="parameter">input</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to encrypt
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result encrypt data
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "decrypt"></a>
+    <strong>decrypt (alg, input, key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    quick decrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+        <li><span class="parameter">input</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to decrypt
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result decrypt data
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_evp_cipher"></a>Class evp_cipher </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "evp_cipher:info"></a>
+    <strong>evp_cipher:info ()</strong>
+    </dt>
+    <dd>
+    get infomation of evp_cipher object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        info keys include name,block_size,key_length,iv_length,flags,mode
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_cipher:BytesToKey"></a>
+    <strong>evp_cipher:BytesToKey (data, string, md)</strong>
+    </dt>
+    <dd>
+    derive key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         derive data
+        </li>
+        <li><span class="parameter">string</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string[opt]</a></span>
+         salt salt will get strong security
+        </li>
+        <li><span class="parameter">md</span>
+            <span class="types"><span class="type">ev_digest</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         digest method used to diver key, default with 'sha1'
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        key</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        iv</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_cipher:cipher"></a>
+    <strong>evp_cipher:cipher (encrypt, input, key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    do encrypt or decrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">encrypt</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for encrypt,false for decrypt
+        </li>
+        <li><span class="parameter">input</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to encrypt or decrypt
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_cipher:encrypt"></a>
+    <strong>evp_cipher:encrypt (input, key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    do encrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to encrypt
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_cipher:decrypt"></a>
+    <strong>evp_cipher:decrypt (input, key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    do decrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to decrypt
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_cipher:new"></a>
+    <strong>evp_cipher:new (encrypt, key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    get evp_cipher_ctx to encrypt or decrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">encrypt</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for encrypt,false for decrypt
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_cipher_ctx</span></span>
+        evp_cipher_ctx object
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/cipher.html#evp_cipher_ctx">evp_cipher_ctx</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "evp_cipher:encrypt_new"></a>
+    <strong>evp_cipher:encrypt_new (key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    get evp_cipher_ctx to encrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_cipher_ctx</span></span>
+        evp_cipher_ctx object
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/cipher.html#evp_cipher_ctx">evp_cipher_ctx</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "evp_cipher:decrypt_new"></a>
+    <strong>evp_cipher:decrypt_new (encrypt, key[, iv[, pad[, engine]]])</strong>
+    </dt>
+    <dd>
+    get evp_cipher_ctx to decrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">encrypt</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for encrypt,false for decrypt
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         secret key
+        </li>
+        <li><span class="parameter">iv</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">pad</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for padding default
+        </li>
+        <li><span class="parameter">engine</span>
+            <span class="types"><span class="type">engine</span></span>
+         custom crypto engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_cipher_ctx</span></span>
+        evp_cipher_ctx object
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/cipher.html#evp_cipher_ctx">evp_cipher_ctx</a>
+    </ul>
+
+
+</dd>
+</dl>
+    <h2><a name="Class_evp_cipher_ctx"></a>Class evp_cipher_ctx </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "evp_cipher_ctx:info"></a>
+    <strong>evp_cipher_ctx:info ()</strong>
+    </dt>
+    <dd>
+    get infomation of evp_cipher_ctx object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        info keys include block_size,key_length,iv_length,flags,mode,nid,type, evp_cipher
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_cipher_ctx:update"></a>
+    <strong>evp_cipher_ctx:update (msg)</strong>
+    </dt>
+    <dd>
+    feed data to do cipher
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result parture result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_cipher_ctx:final"></a>
+    <strong>evp_cipher_ctx:final ()</strong>
+    </dt>
+    <dd>
+    get result of cipher
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result last result
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

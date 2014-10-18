@@ -1,0 +1,946 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Fields">Fields</a></li>
+<li><a href="#Class_evp_pkey">Class evp_pkey </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><strong>pkey</strong></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>pkey</code></h1>
+<p>Public/Private key module.</p>
+<p></p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">pkey = require&apos;openssl&apos;.pkey</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#new">new ([alg='rsa'[, bits=1024|512[, 3rd[, flags]]]])</a></td>
+	<td class="summary">generate a new keypair</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_public">get_public (priv_key)</a></td>
+	<td class="summary">get public key from private key object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#read">read (input[, if=false[, format='auto'[, passhprase]]])</a></td>
+	<td class="summary">read public/private key from data</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sign">sign (key, data[, md_alg='SHA1'])</a></td>
+	<td class="summary">sign message with private key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#verify">verify (key, data, signature[, md_alg='SHA1'], true)</a></td>
+	<td class="summary">verify signed message with public key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#encrypt">encrypt (key, data, string)</a></td>
+	<td class="summary">encrypt message with public key
+ encrypt length of message must not longer than key size, if shorter will do padding,currently supports 6 padding modes.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#decrypt">decrypt (key, data, string)</a></td>
+	<td class="summary">decrypt message with private key
+ pair with encrypt</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#seal">seal (pubkeys, data[, alg='RC4'])</a></td>
+	<td class="summary">seal  and encrypt  message with one public key
+ data be encrypt with secret key, secret key be encrypt with public key
+ encrypts data using pubkeys in table, so that only owners of the respective private keys and ekeys can decrypt and read the data.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#seal">seal (pubkey, data[, alg='RC4'])</a></td>
+	<td class="summary">seal and encrypt message with one public key
+ data be encrypt with secret key, secret key be encrypt with public key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#open">open (pkey, ekey, string[, md_alg='RC4'])</a></td>
+	<td class="summary">open and ecrypted seal data with private key</td>
+	</tr>
+</table>
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#factors">factors</a></td>
+	<td class="summary">create a new keypair</td>
+	</tr>
+</table>
+<h2><a href="#Class_evp_pkey">Class evp_pkey </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#evp_pkey:export">evp_pkey:export ([only_public=false[, raw_key=false[, pem=true[, passphrase]]]])</a></td>
+	<td class="summary">export evp_pkey as string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_pkey:parse">evp_pkey:parse ()</a></td>
+	<td class="summary">get key details as table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_pkey:is_private">evp_pkey:is_private ()</a></td>
+	<td class="summary">return key is private or public</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_pkey:compute_key">evp_pkey:compute_key (remote_public_key)</a></td>
+	<td class="summary">compute dh key, check whether then supplied key is a private key
+ by checking then prime factors whether set</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_pkey:sign">evp_pkey:sign (data[, md_alg='SHA1'])</a></td>
+	<td class="summary">sign message with private key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_pkey:verify">evp_pkey:verify (data, signature[, md_alg='SHA1'], true)</a></td>
+	<td class="summary">verify signed message with public key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_pkey:encrypt">evp_pkey:encrypt (data, string)</a></td>
+	<td class="summary">encrypt message with public key
+ encrypt length of message must not longer than key size, if shorter will do padding,currently supports 6 padding modes.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_pkey:decrypt">evp_pkey:decrypt (data, string)</a></td>
+	<td class="summary">decrypt message with private key
+ pair with encrypt</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_pkey:seal">evp_pkey:seal (data[, alg='RC4'])</a></td>
+	<td class="summary">seal and encrypt message with one public key
+ data be encrypt with secret key, secret key be encrypt with public key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_pkey:open">evp_pkey:open (ekey, string[, md_alg='RC4'])</a></td>
+	<td class="summary">open and ecrypted seal data with private key</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "new"></a>
+    <strong>new ([alg='rsa'[, bits=1024|512[, 3rd[, flags]]]])</strong>
+    </dt>
+    <dd>
+    generate a new keypair
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , accept 'rsa','dsa','dh','ec'
+         (<em>default</em> 'rsa')
+        </li>
+        <li><span class="parameter">bits</span>
+            <span class="types"><span class="type">integer</span></span>
+        , rsa with 1024,dh with 512
+         (<em>default</em> 1024|512)
+        </li>
+        <li><span class="parameter">3rd</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">integer</span></span>
+         when alg is ec, give ec_name, when alg is rsa give e value default is 0x10001
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">integer</span></span>
+         when alg is ec need this.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_pkey</span></span>
+        object with mapping to EVP_PKEY in openssl
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_public"></a>
+    <strong>get_public (priv_key)</strong>
+    </dt>
+    <dd>
+    get public key from private key object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">priv_key</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_pkey</span></span>
+        pub_key
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/pkey.html#evp_pkey">evp_pkey</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "read"></a>
+    <strong>read (input[, if=false[, format='auto'[, passhprase]]])</strong>
+    </dt>
+    <dd>
+    read public/private key from data
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">openssl.bio</span></span>
+         string data or bio object
+        </li>
+        <li><span class="parameter">if</span>
+            <span class="types"><span class="type">public</span></span>
+         true when input is public key
+         (<em>default</em> false)
+        </li>
+        <li><span class="parameter">format</span>
+            <span class="types"><span class="type">format</span></span>
+         or encoding of input, support 'auto','pem','der'
+         (<em>default</em> 'auto')
+        </li>
+        <li><span class="parameter">passhprase</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         when not public need this
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_pkey</span></span>
+        public key
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/pkey.html#evp_pkey">evp_pkey</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "sign"></a>
+    <strong>sign (key, data[, md_alg='SHA1'])</strong>
+    </dt>
+    <dd>
+    sign message with private key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         key used to sign message
+        </li>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data be signed
+        </li>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">env_digest</span></span>
+         default use sha-1
+         (<em>default</em> 'SHA1')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        signed message
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "verify"></a>
+    <strong>verify (key, data, signature[, md_alg='SHA1'], true)</strong>
+    </dt>
+    <dd>
+    verify signed message with public key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         key used to verify message
+        </li>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data be signed
+        </li>
+        <li><span class="parameter">signature</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         signed result
+        </li>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">env_digest</span></span>
+         default use sha-1
+         (<em>default</em> 'SHA1')
+        </li>
+        <li><span class="parameter">true</span>
+            <span class="types"><span class="type">boolean</span></span>
+         for pass verify
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "encrypt"></a>
+    <strong>encrypt (key, data, string)</strong>
+    </dt>
+    <dd>
+    encrypt message with public key
+ encrypt length of message must not longer than key size, if shorter will do padding,currently supports 6 padding modes.
+ They are: pkcs1, sslv23, no, oaep, x931, pss.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         key used to encrypted message
+        </li>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to be encrypted
+        </li>
+        <li><span class="parameter">string</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string[opt='pkcs1']</a></span>
+         padding padding mode
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        encrypted message
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "decrypt"></a>
+    <strong>decrypt (key, data, string)</strong>
+    </dt>
+    <dd>
+    decrypt message with private key
+ pair with encrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         key used to decrypted message
+        </li>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to be decrypted
+        </li>
+        <li><span class="parameter">string</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string[opt='pkcs1']</a></span>
+         padding padding mode
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result
+    </ol>
+     <h3>Or</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "seal"></a>
+    <strong>seal (pubkeys, data[, alg='RC4'])</strong>
+    </dt>
+    <dd>
+    seal  and encrypt  message with one public key
+ data be encrypt with secret key, secret key be encrypt with public key
+ encrypts data using pubkeys in table, so that only owners of the respective private keys and ekeys can decrypt and read the data.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pubkeys</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         public keys to encrypt secret key
+        </li>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to be encrypted
+        </li>
+        <li><span class="parameter">alg</span>
+            <span class="types"><span class="type">cipher</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+         (<em>default</em> 'RC4')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        data encrypted</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        ekey secret key encrypted by public key</li>
+        <li>
+           <span class="types"><span class="type">stringiv</span></span>
+        </li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "seal"></a>
+    <strong>seal (pubkey, data[, alg='RC4'])</strong>
+    </dt>
+    <dd>
+    seal and encrypt message with one public key
+ data be encrypt with secret key, secret key be encrypt with public key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pubkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         public keys to encrypt secret key
+        </li>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to be encrypted
+        </li>
+        <li><span class="parameter">alg</span>
+            <span class="types"><span class="type">cipher</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+         (<em>default</em> 'RC4')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        data encrypted</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        skey secret key encrypted by public key</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        iv</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "open"></a>
+    <strong>open (pkey, ekey, string[, md_alg='RC4'])</strong>
+    </dt>
+    <dd>
+    open and ecrypted seal data with private key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         private key used to open encrypted secret key
+        </li>
+        <li><span class="parameter">ekey</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         encrypted secret key
+        </li>
+        <li><span class="parameter">string</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         iv
+        </li>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><span class="type">evp_cipher</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+         (<em>default</em> 'RC4')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        data decrypted message or nil on failure
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Fields"></a>Fields</h2>
+    <dl class="function">
+    <dt>
+    <a name = "factors"></a>
+    <strong>factors</strong>
+    </dt>
+    <dd>
+    create a new keypair
+
+
+    <ul>
+        <li><span class="parameter">factors</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         to create private/public key, key alg only accept accept 'rsa','dsa','dh','ec' and must exist</br>
+  when arg is rsa, table may with key n,e,d,p,q,dmp1,dmq1,iqmp,both are string value</br>
+  when arg is dsa, table may with key p,q,g,priv_key,pub_key,both are string value</br>
+  when arg is dh, table may with key p,g,priv_key,pub_key,both are string value</br>
+  when arg is ec, table may with D,X,Y,Z,both are string value</br>
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_evp_pkey"></a>Class evp_pkey </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "evp_pkey:export"></a>
+    <strong>evp_pkey:export ([only_public=false[, raw_key=false[, pem=true[, passphrase]]]])</strong>
+    </dt>
+    <dd>
+    export evp_pkey as string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">only_public</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for export only public or private
+         (<em>default</em> false)
+        </li>
+        <li><span class="parameter">raw_key</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for export low layer key just rsa,dsa,dc...
+         (<em>default</em> false)
+        </li>
+        <li><span class="parameter">pem</span>
+            <span class="types"><span class="type">boolean</span></span>
+         default export as pem format, false export as der string
+         (<em>default</em> true)
+        </li>
+        <li><span class="parameter">passphrase</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         if given, export key will encrypt with des-cbc-ede
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_pkey:parse"></a>
+    <strong>evp_pkey:parse ()</strong>
+    </dt>
+    <dd>
+    get key details as table
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        infos with key bits,pkey,type, pkey may be rsa,dh,dsa, show as table with factor hex encoded bignum
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_pkey:is_private"></a>
+    <strong>evp_pkey:is_private ()</strong>
+    </dt>
+    <dd>
+    return key is private or public
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        ture is private or public key
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_pkey:compute_key"></a>
+    <strong>evp_pkey:compute_key (remote_public_key)</strong>
+    </dt>
+    <dd>
+    compute dh key, check whether then supplied key is a private key
+ by checking then prime factors whether set
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">remote_public_key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_pkey:sign"></a>
+    <strong>evp_pkey:sign (data[, md_alg='SHA1'])</strong>
+    </dt>
+    <dd>
+    sign message with private key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data be signed
+        </li>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">env_digest</span></span>
+         default use sha-1
+         (<em>default</em> 'SHA1')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        signed message
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_pkey:verify"></a>
+    <strong>evp_pkey:verify (data, signature[, md_alg='SHA1'], true)</strong>
+    </dt>
+    <dd>
+    verify signed message with public key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data be signed
+        </li>
+        <li><span class="parameter">signature</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         signed result
+        </li>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">env_digest</span></span>
+         default use sha-1
+         (<em>default</em> 'SHA1')
+        </li>
+        <li><span class="parameter">true</span>
+            <span class="types"><span class="type">boolean</span></span>
+         for pass verify
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_pkey:encrypt"></a>
+    <strong>evp_pkey:encrypt (data, string)</strong>
+    </dt>
+    <dd>
+    encrypt message with public key
+ encrypt length of message must not longer than key size, if shorter will do padding,currently supports 6 padding modes.
+ They are: pkcs1, sslv23, no, oaep, x931, pss.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to be encrypted
+        </li>
+        <li><span class="parameter">string</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string[opt='pkcs1']</a></span>
+         padding padding mode
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        encrypted message
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_pkey:decrypt"></a>
+    <strong>evp_pkey:decrypt (data, string)</strong>
+    </dt>
+    <dd>
+    decrypt message with private key
+ pair with encrypt
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to be decrypted
+        </li>
+        <li><span class="parameter">string</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string[opt='pkcs1']</a></span>
+         padding padding mode
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result
+    </ol>
+     <h3>Or</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_pkey:seal"></a>
+    <strong>evp_pkey:seal (data[, alg='RC4'])</strong>
+    </dt>
+    <dd>
+    seal and encrypt message with one public key
+ data be encrypt with secret key, secret key be encrypt with public key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to be encrypted
+        </li>
+        <li><span class="parameter">alg</span>
+            <span class="types"><span class="type">cipher</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+         (<em>default</em> 'RC4')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        data encrypted</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        skey secret key encrypted by public key</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        iv</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_pkey:open"></a>
+    <strong>evp_pkey:open (ekey, string[, md_alg='RC4'])</strong>
+    </dt>
+    <dd>
+    open and ecrypted seal data with private key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ekey</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         encrypted secret key
+        </li>
+        <li><span class="parameter">string</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         iv
+        </li>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><span class="type">evp_cipher</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+         (<em>default</em> 'RC4')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        data decrypted message or nil on failure
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

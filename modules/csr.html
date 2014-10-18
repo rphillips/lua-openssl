@@ -1,0 +1,632 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_x509_req">Class x509_req </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><strong>csr</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>csr</code></h1>
+<p>csr module.</p>
+<p>
+ create and manage x509 certificate sign request</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  csr = require&apos;openssl&apos;.csr
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#read">read (input[, format='auto'])</a></td>
+	<td class="summary">read x509_req from string or bio input</td>
+	</tr>
+</table>
+<h2><a href="#Class_x509_req">Class x509_req </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:export">x509_req:export ([format='pem'[, noext='true']])</a></td>
+	<td class="summary">export x509_req to string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:public">x509_req:public ()</a></td>
+	<td class="summary">get public key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:public">x509_req:public (pubkey)</a></td>
+	<td class="summary">set public key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:version">x509_req:version ()</a></td>
+	<td class="summary">get version key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:version">x509_req:version (version)</a></td>
+	<td class="summary">set version key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:subject">x509_req:subject ()</a></td>
+	<td class="summary">get subject x509_name object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:subject">x509_req:subject (subject)</a></td>
+	<td class="summary">set subject x509_name object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:attribute">x509_req:attribute (location, nil)</a></td>
+	<td class="summary">remove attribute object from location</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:attribute">x509_req:attribute (location)</a></td>
+	<td class="summary">get attribute object from location</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:attribute">x509_req:attribute (attribute)</a></td>
+	<td class="summary">add attribute to x509_req object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:attr_count">x509_req:attr_count ()</a></td>
+	<td class="summary">get total attribute count in x509_req object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:to_x509">x509_req:to_x509 ()</a></td>
+	<td class="summary">convert x509_req to x509 object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:dup">x509_req:dup ()</a></td>
+	<td class="summary">clone x509_req object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:check">x509_req:check (pkey)</a></td>
+	<td class="summary">check x509_req with evp_pkey</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:verify">x509_req:verify ()</a></td>
+	<td class="summary">verify x509_req signature</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:digest">x509_req:digest ([md_alg='SHA1'])</a></td>
+	<td class="summary">get digest of x509_req</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_req:parse">x509_req:parse ([default=true])</a></td>
+	<td class="summary">parse x509_req object as table</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "read"></a>
+    <strong>read (input[, format='auto'])</strong>
+    </dt>
+    <dd>
+    read x509_req from string or bio input
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><span class="type">bio</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         input data
+        </li>
+        <li><span class="parameter">format</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         support 'auto','pem','der'
+         (<em>default</em> 'auto')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_req</span></span>
+        certificate sign request object
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_x509_req"></a>Class x509_req </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "x509_req:export"></a>
+    <strong>x509_req:export ([format='pem'[, noext='true']])</strong>
+    </dt>
+    <dd>
+    export x509_req to string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">format</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+         (<em>default</em> 'pem')
+        </li>
+        <li><span class="parameter">noext</span>
+            <span class="types"><span class="type">boolean</span></span>
+         not export extension
+         (<em>default</em> 'true')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:public"></a>
+    <strong>x509_req:public ()</strong>
+    </dt>
+    <dd>
+    get public key
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_pkey</span></span>
+        public key
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:public"></a>
+    <strong>x509_req:public (pubkey)</strong>
+    </dt>
+    <dd>
+    set public key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pubkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         public key set to x509_req
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:version"></a>
+    <strong>x509_req:version ()</strong>
+    </dt>
+    <dd>
+    get version key
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">integer</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:version"></a>
+    <strong>x509_req:version (version)</strong>
+    </dt>
+    <dd>
+    set version key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">version</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:subject"></a>
+    <strong>x509_req:subject ()</strong>
+    </dt>
+    <dd>
+    get subject x509_name object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_name</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:subject"></a>
+    <strong>x509_req:subject (subject)</strong>
+    </dt>
+    <dd>
+    set subject x509_name object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">subject</span>
+            <span class="types"><span class="type">x509_name</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:attribute"></a>
+    <strong>x509_req:attribute (location, nil)</strong>
+    </dt>
+    <dd>
+    remove attribute object from location
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">location</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+        <li><span class="parameter">nil</span>
+            <span class="types"><span class="type">nil</span></span>
+        , nil not none
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_attribute</span></span>
+        attribute removed
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:attribute"></a>
+    <strong>x509_req:attribute (location)</strong>
+    </dt>
+    <dd>
+    get attribute object from location
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">location</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_attribute</span></span>
+        attribute
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:attribute"></a>
+    <strong>x509_req:attribute (attribute)</strong>
+    </dt>
+    <dd>
+    add attribute to x509_req object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">attribute</span>
+            <span class="types"><span class="type">x509_attribute</span></span>
+         attribute to add
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:attr_count"></a>
+    <strong>x509_req:attr_count ()</strong>
+    </dt>
+    <dd>
+    get total attribute count in x509_req object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">integer</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:to_x509"></a>
+    <strong>x509_req:to_x509 ()</strong>
+    </dt>
+    <dd>
+    convert x509_req to x509 object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509</span></span>
+        object not signed
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:dup"></a>
+    <strong>x509_req:dup ()</strong>
+    </dt>
+    <dd>
+    clone x509_req object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_req</span></span>
+        object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:check"></a>
+    <strong>x509_req:check (pkey)</strong>
+    </dt>
+    <dd>
+    check x509_req with evp_pkey
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for check pass
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:verify"></a>
+    <strong>x509_req:verify ()</strong>
+    </dt>
+    <dd>
+    verify x509_req signature
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for verify pass
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:digest"></a>
+    <strong>x509_req:digest ([md_alg='SHA1'])</strong>
+    </dt>
+    <dd>
+    get digest of x509_req
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><span class="type">evp_md</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         default use sha1
+         (<em>default</em> 'SHA1')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        digest result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_req:parse"></a>
+    <strong>x509_req:parse ([default=true])</strong>
+    </dt>
+    <dd>
+    parse x509_req object as table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">default</span>
+            <span class="types"><span class="type">shortname</span></span>
+         will use short object name
+         (<em>default</em> true)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

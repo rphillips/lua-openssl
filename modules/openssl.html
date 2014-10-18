@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><strong>openssl</strong></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>openssl</code></h1>
+<p>Provide openssl base function in lua.</p>
+<p></p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  openssl = require(&apos;openssl&apos;)
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#hex">hex (str[, encode=true])</a></td>
+	<td class="summary">hex encode or decode string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#list">list (type)</a></td>
+	<td class="summary">get method names</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#error">error ([verbose=false])</a></td>
+	<td class="summary">get last error infomation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#randome">randome (length[, strong=false])</a></td>
+	<td class="summary">get randome bytes</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#object">object (oid, name[, alias=nil])</a></td>
+	<td class="summary">add new object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#object">object (nid_or_name)</a></td>
+	<td class="summary">get object according object nid or name</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#engine">engine (engine_id)</a></td>
+	<td class="summary">get openssl engine object</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "hex"></a>
+    <strong>hex (str[, encode=true])</strong>
+    </dt>
+    <dd>
+    hex encode or decode string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">encode</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to encoed, false to decode
+         (<em>default</em> true)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "list"></a>
+    <strong>list (type)</strong>
+    </dt>
+    <dd>
+    get method names
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">type</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         support 'cipher','digests','pkeys','comps'
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        as array
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "error"></a>
+    <strong>error ([verbose=false])</strong>
+    </dt>
+    <dd>
+    get last error infomation
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">verbose</span>
+            <span class="types"><span class="type">boolean</span></span>
+
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        errcode</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        errmsg</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        verbose message</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "randome"></a>
+    <strong>randome (length[, strong=false])</strong>
+    </dt>
+    <dd>
+    get randome bytes
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">length</span>
+            <span class="types"><span class="type">number</span></span>
+
+        </li>
+        <li><span class="parameter">strong</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to generate strong randome bytes
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "object"></a>
+    <strong>object (oid, name[, alias=nil])</strong>
+    </dt>
+    <dd>
+    add new object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">oid</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">alias</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "object"></a>
+    <strong>object (nid_or_name)</strong>
+    </dt>
+    <dd>
+    get object according object nid or name
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">nid_or_name</span>
+            <span class="types"><span class="type">number</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">asn1_object</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "engine"></a>
+    <strong>engine (engine_id)</strong>
+    </dt>
+    <dd>
+    get openssl engine object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">engine_id</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/openssl.html#engine">engine</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

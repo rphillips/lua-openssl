@@ -1,0 +1,455 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_evp_digest">Class evp_digest </a></li>
+<li><a href="#Class_evp_digest_ctx">Class evp_digest_ctx </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><strong>digest</strong></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>digest</code></h1>
+<p>Provide digest function in lua.</p>
+<p></p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  digest = require(&apos;openssl&apos;).digest
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#list">list ([alias])</a></td>
+	<td class="summary">list all support digest algs</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get">get (alg)</a></td>
+	<td class="summary">get evp_digest object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#new">new (alg)</a></td>
+	<td class="summary">get evp_digest_ctx object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#digest">digest (alg, msg[, raw])</a></td>
+	<td class="summary">quick method to generate digest result</td>
+	</tr>
+</table>
+<h2><a href="#Class_evp_digest">Class evp_digest </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest:new">evp_digest:new ([nothing])</a></td>
+	<td class="summary">create new evp_digest_ctx</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest:info">evp_digest:info ()</a></td>
+	<td class="summary">get infomation of evp_digest object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest:digest">evp_digest:digest (msg[, eng])</a></td>
+	<td class="summary">compute msg digest result</td>
+	</tr>
+</table>
+<h2><a href="#Class_evp_digest_ctx">Class evp_digest_ctx </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest_ctx:info">evp_digest_ctx:info ()</a></td>
+	<td class="summary">get infomation of evp_digest_ctx object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest_ctx:update">evp_digest_ctx:update (msg)</a></td>
+	<td class="summary">feed data to do digest</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest_ctx:final">evp_digest_ctx:final ([last[, raw]])</a></td>
+	<td class="summary">get result of digest</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest_ctx:reset">evp_digest_ctx:reset ()</a></td>
+	<td class="summary">reset evp_diget_ctx to reuse</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "list"></a>
+    <strong>list ([alias])</strong>
+    </dt>
+    <dd>
+    list all support digest algs
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alias</span>
+            <span class="types"><span class="type">boolean</span></span>
+         include alias names for digest alg, default true
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">all</span></span>
+        methods
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get"></a>
+    <strong>get (alg)</strong>
+    </dt>
+    <dd>
+    get evp_digest object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_digest</span></span>
+        digest object mapping EVP_MD in openssl
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/digest.html#evp_digest">evp_digest</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "new"></a>
+    <strong>new (alg)</strong>
+    </dt>
+    <dd>
+    get evp_digest_ctx object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_digest_ctx</span></span>
+        digest object mapping EVP_MD_CTX in openssl
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/digest.html#evp_digest_ctx">evp_digest_ctx</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "digest"></a>
+    <strong>digest (alg, msg[, raw])</strong>
+    </dt>
+    <dd>
+    quick method to generate digest result
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to compute digest
+        </li>
+        <li><span class="parameter">raw</span>
+            <span class="types"><span class="type">boolean</span></span>
+         binary result return if set true, or hex encoded string default
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        digest result value
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_evp_digest"></a>Class evp_digest </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "evp_digest:new"></a>
+    <strong>evp_digest:new ([nothing])</strong>
+    </dt>
+    <dd>
+    create new evp_digest_ctx
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">nothing</span>
+            <span class="types"><span class="type">engine,</span></span>
+         will use default engine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_digest_ctx</span></span>
+        ctx
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/digest.html#evp_digest_ctx">evp_digest_ctx</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "evp_digest:info"></a>
+    <strong>evp_digest:info ()</strong>
+    </dt>
+    <dd>
+    get infomation of evp_digest object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        info keys include nid,name size,block_size,pkey_type,flags
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_digest:digest"></a>
+    <strong>evp_digest:digest (msg[, eng])</strong>
+    </dt>
+    <dd>
+    compute msg digest result
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data to digest
+        </li>
+        <li><span class="parameter">eng</span>
+            <span class="types"><span class="type">engine,</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result a binary hash value for msg
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_evp_digest_ctx"></a>Class evp_digest_ctx </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "evp_digest_ctx:info"></a>
+    <strong>evp_digest_ctx:info ()</strong>
+    </dt>
+    <dd>
+    get infomation of evp_digest_ctx object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        info keys include size,block_size,digest
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_digest_ctx:update"></a>
+    <strong>evp_digest_ctx:update (msg)</strong>
+    </dt>
+    <dd>
+    feed data to do digest
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         data
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_digest_ctx:final"></a>
+    <strong>evp_digest_ctx:final ([last[, raw]])</strong>
+    </dt>
+    <dd>
+    get result of digest
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">last</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         last part of data
+        </li>
+        <li><span class="parameter">raw</span>
+            <span class="types"><span class="type">boolean</span></span>
+         binary or hex encoded result, default true for binary result
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        val hash result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_digest_ctx:reset"></a>
+    <strong>evp_digest_ctx:reset ()</strong>
+    </dt>
+    <dd>
+    reset evp_diget_ctx to reuse
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

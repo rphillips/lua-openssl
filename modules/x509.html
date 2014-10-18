@@ -1,0 +1,1007 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_x509">Class x509 </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><strong>x509</strong></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>x509</code></h1>
+<p>x509 module.</p>
+<p>
+ create and manage x509 certificate</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  x509 = require&apos;openssl&apos;.x509
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#new">new ([serial[, csr[, subject[, extensions[, attributes]]]]])</a></td>
+	<td class="summary">create or generate a new x509 object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#read">read (input[, format='auto'])</a></td>
+	<td class="summary">read x509 from string or bio input</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#purpose">purpose ()</a></td>
+	<td class="summary">return all supported purpose as table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#purpose">purpose (purpose)</a></td>
+	<td class="summary">get special purpose info as table</td>
+	</tr>
+</table>
+<h2><a href="#Class_x509">Class x509 </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#x509:export">x509:export ([format='pem'[, noext='true']])</a></td>
+	<td class="summary">export x509_req to string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:parse">x509:parse ([default=true])</a></td>
+	<td class="summary">parse x509 object as table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:sign">x509:sign (pkey, cacert[, md_alg='sha1WithRSAEncryption'])</a></td>
+	<td class="summary">sign x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:check">x509:check (pkey)</a></td>
+	<td class="summary">check x509 with evp_pkey</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:check">x509:check (cacerts, untrusted[, purpose])</a></td>
+	<td class="summary">check x509 with ca certchian and option purpose
+ purpose can be one of: ssl_client, ssl_server, ns_ssl_server, smime_sign, smime_encrypt, crl_sign, any, ocsp_helper, timestamp_sign</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:digest">x509:digest ([md_alg='sha1'])</a></td>
+	<td class="summary">get digest of x509 object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:pubkey">x509:pubkey ()</a></td>
+	<td class="summary">get public key of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:pubkey">x509:pubkey (pubkey)</a></td>
+	<td class="summary">set public key of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:extensions">x509:extensions ([asobject=false])</a></td>
+	<td class="summary">get extensions of x509 object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:extensions">x509:extensions (extensions)</a></td>
+	<td class="summary">set extension of x509 object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:issuer">x509:issuer ([asobject=false])</a></td>
+	<td class="summary">get issuer name of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:issuer">x509:issuer (name)</a></td>
+	<td class="summary">set issuer name of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:subject">x509:subject ([asobject=false])</a></td>
+	<td class="summary">get subject name of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:subject">x509:subject (subject)</a></td>
+	<td class="summary">set subject name of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:serial">x509:serial ([asobject=true])</a></td>
+	<td class="summary">get serial number of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:serial">x509:serial (serail)</a></td>
+	<td class="summary">set serial number of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:version">x509:version ()</a></td>
+	<td class="summary">get version number of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:version">x509:version (version)</a></td>
+	<td class="summary">set version number of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:notbefore">x509:notbefore ()</a></td>
+	<td class="summary">get notbefore valid time of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:notbefore">x509:notbefore (notbefore)</a></td>
+	<td class="summary">set notbefore valid time of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:notafter">x509:notafter ()</a></td>
+	<td class="summary">get notafter valid time of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:notafter">x509:notafter (notafter)</a></td>
+	<td class="summary">set notafter valid time of x509</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:validat">x509:validat ([time])</a></td>
+	<td class="summary">check x509 valid</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509:validat">x509:validat (notbefore, notafter)</a></td>
+	<td class="summary">set valid time, notbefore and notafter</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "new"></a>
+    <strong>new ([serial[, csr[, subject[, extensions[, attributes]]]]])</strong>
+    </dt>
+    <dd>
+    create or generate a new x509 object.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">serial</span>
+            <span class="types"><span class="type">openssl.bn</span></span>
+         serial number
+        </li>
+        <li><span class="parameter">csr</span>
+            <span class="types"><a class="type" href="../modules/x509.html#x509">x509_req</a></span>
+        ,copy x509_name, pubkey and extension to new object
+        </li>
+        <li><span class="parameter">subject</span>
+            <span class="types"><a class="type" href="../modules/x509.html#x509">x509_name</a></span>
+         subject name set to x509_req
+        </li>
+        <li><span class="parameter">extensions</span>
+            <span class="types"><span class="type">stack_of_x509_extension</span></span>
+         add to x509
+        </li>
+        <li><span class="parameter">attributes</span>
+            <span class="types"><span class="type">stack_of_x509_attribute</span></span>
+         add to x509
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/x509.html#x509">x509</a></span>
+        certificate object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "read"></a>
+    <strong>read (input[, format='auto'])</strong>
+    </dt>
+    <dd>
+    read x509 from string or bio input
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><span class="type">bio</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         input data
+        </li>
+        <li><span class="parameter">format</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         support 'auto','pem','der'
+         (<em>default</em> 'auto')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/x509.html#x509">x509</a></span>
+        certificate object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "purpose"></a>
+    <strong>purpose ()</strong>
+    </dt>
+    <dd>
+    return all supported purpose as table
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "purpose"></a>
+    <strong>purpose (purpose)</strong>
+    </dt>
+    <dd>
+    get special purpose info as table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">purpose</span>
+            <span class="types"><span class="type">number</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         id or short name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_x509"></a>Class x509 </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "x509:export"></a>
+    <strong>x509:export ([format='pem'[, noext='true']])</strong>
+    </dt>
+    <dd>
+    export x509_req to string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">format</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , 'der' or 'pem' default
+         (<em>default</em> 'pem')
+        </li>
+        <li><span class="parameter">noext</span>
+            <span class="types"><span class="type">boolean</span></span>
+         not export extension
+         (<em>default</em> 'true')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:parse"></a>
+    <strong>x509:parse ([default=true])</strong>
+    </dt>
+    <dd>
+    parse x509 object as table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">default</span>
+            <span class="types"><span class="type">shortname</span></span>
+         will use short object name
+         (<em>default</em> true)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        result which all x509 information
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:sign"></a>
+    <strong>x509:sign (pkey, cacert[, md_alg='sha1WithRSAEncryption'])</strong>
+    </dt>
+    <dd>
+    sign x509
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         private key to sign x509
+        </li>
+        <li><span class="parameter">cacert</span>
+            <span class="types"><a class="type" href="../modules/x509.html#x509">x509</a> or <a class="type" href="../modules/x509.html#x509">x509_name</a></span>
+         or cacert x509_name
+        </li>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">md_digest</span></span>
+
+         (<em>default</em> 'sha1WithRSAEncryption')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for check pass
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:check"></a>
+    <strong>x509:check (pkey)</strong>
+    </dt>
+    <dd>
+    check x509 with evp_pkey
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         private key witch match with x509 pubkey
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for check pass
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:check"></a>
+    <strong>x509:check (cacerts, untrusted[, purpose])</strong>
+    </dt>
+    <dd>
+    check x509 with ca certchian and option purpose
+ purpose can be one of: ssl_client, ssl_server, ns_ssl_server, smime_sign, smime_encrypt, crl_sign, any, ocsp_helper, timestamp_sign
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cacerts</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+        <li><span class="parameter">untrusted</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+         certs  containing a bunch of certs that are not trusted but may be useful in validating the certificate.
+        </li>
+        <li><span class="parameter">purpose</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to check supported
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for check pass
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:digest"></a>
+    <strong>x509:digest ([md_alg='sha1'])</strong>
+    </dt>
+    <dd>
+    get digest of x509 object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><span class="type">evp_digest</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , default use 'sha1'
+         (<em>default</em> 'sha1')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        digest result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:pubkey"></a>
+    <strong>x509:pubkey ()</strong>
+    </dt>
+    <dd>
+    get public key of x509
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_pkey</span></span>
+        public key
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:pubkey"></a>
+    <strong>x509:pubkey (pubkey)</strong>
+    </dt>
+    <dd>
+    set public key of x509
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pubkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         public key set to x509
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result, true for success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:extensions"></a>
+    <strong>x509:extensions ([asobject=false])</strong>
+    </dt>
+    <dd>
+    get extensions of x509 object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">asobject</span>
+            <span class="types"><span class="type">boolean</span></span>
+        , true for return as stack_of_x509_extension or as table
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">stack_of_x509_extension</span></span>
+        object when param set true
+    </ol>
+     <h3>Or</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        contain all x509_extension when param set false or nothing
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:extensions"></a>
+    <strong>x509:extensions (extensions)</strong>
+    </dt>
+    <dd>
+    set extension of x509 object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">extensions</span>
+            <span class="types"><span class="type">stack_of_x509_extension</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:issuer"></a>
+    <strong>x509:issuer ([asobject=false])</strong>
+    </dt>
+    <dd>
+    get issuer name of x509
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">asobject</span>
+            <span class="types"><span class="type">boolean</span></span>
+        , true for return as x509_name object, or as table
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="../modules/x509.html#x509">x509_name</a></span>
+        issuer</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        issuer name as table</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:issuer"></a>
+    <strong>x509:issuer (name)</strong>
+    </dt>
+    <dd>
+    set issuer name of x509
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="../modules/x509.html#x509">x509_name</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:subject"></a>
+    <strong>x509:subject ([asobject=false])</strong>
+    </dt>
+    <dd>
+    get subject name of x509
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">asobject</span>
+            <span class="types"><span class="type">boolean</span></span>
+        , true for return as x509_name object, or as table
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="../modules/x509.html#x509">x509_name</a></span>
+        subject name</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        subject name as table</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:subject"></a>
+    <strong>x509:subject (subject)</strong>
+    </dt>
+    <dd>
+    set subject name of x509
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">subject</span>
+            <span class="types"><a class="type" href="../modules/x509.html#x509">x509_name</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:serial"></a>
+    <strong>x509:serial ([asobject=true])</strong>
+    </dt>
+    <dd>
+    get serial number of x509
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">asobject</span>
+            <span class="types"><span class="type">boolean</span></span>
+
+         (<em>default</em> true)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bn</span></span>
+        object
+    </ol>
+     <h3>Or</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:serial"></a>
+    <strong>x509:serial (serail)</strong>
+    </dt>
+    <dd>
+    set serial number of x509
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">serail</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">number</span> or <span class="type">bn</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:version"></a>
+    <strong>x509:version ()</strong>
+    </dt>
+    <dd>
+    get version number of x509
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        version of x509
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:version"></a>
+    <strong>x509:version (version)</strong>
+    </dt>
+    <dd>
+    set version number of x509
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">version</span>
+            <span class="types"><span class="type">number</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:notbefore"></a>
+    <strong>x509:notbefore ()</strong>
+    </dt>
+    <dd>
+    get notbefore valid time of x509
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        notbefore time string
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:notbefore"></a>
+    <strong>x509:notbefore (notbefore)</strong>
+    </dt>
+    <dd>
+    set notbefore valid time of x509
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">notbefore</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">number</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:notafter"></a>
+    <strong>x509:notafter ()</strong>
+    </dt>
+    <dd>
+    get notafter valid time of x509
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        notafter time string
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:notafter"></a>
+    <strong>x509:notafter (notafter)</strong>
+    </dt>
+    <dd>
+    set notafter valid time of x509
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">notafter</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">number</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:validat"></a>
+    <strong>x509:validat ([time])</strong>
+    </dt>
+    <dd>
+    check x509 valid
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">time</span>
+            <span class="types"><span class="type">number</span></span>
+        , default will use now time
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">boolean</span></span>
+        result true for valid, or for invalid</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        notbefore</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        notafter</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509:validat"></a>
+    <strong>x509:validat (notbefore, notafter)</strong>
+    </dt>
+    <dd>
+    set valid time, notbefore and notafter
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">notbefore</span>
+            <span class="types"><span class="type">number</span></span>
+
+        </li>
+        <li><span class="parameter">notafter</span>
+            <span class="types"><span class="type">number</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result, true for success
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

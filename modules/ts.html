@@ -1,0 +1,1803 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_ts_req">Class ts_req </a></li>
+<li><a href="#Class_ts_resp">Class ts_resp </a></li>
+<li><a href="#Class_ts_verify_ctx">Class ts_verify_ctx </a></li>
+<li><a href="#Class_ts_resp_ctx">Class ts_resp_ctx </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><strong>ts</strong></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>ts</code></h1>
+<p>timestamp module.</p>
+<p>
+ create and manage x509 certificate sign request</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  ts = require&apos;openssl&apos;.ts
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#req_new">req_new ([version=1])</a></td>
+	<td class="summary">create a new ts_req object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#req_read">req_read (input)</a></td>
+	<td class="summary">read ts_req object from string or bio data</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#resp_read">resp_read (input)</a></td>
+	<td class="summary">read ts_resp object from string or bio input</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#resp_ctx_new">resp_ctx_new ([signer[, pkey[, identity]]])</a></td>
+	<td class="summary">create ts_resp_ctx object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#verify_ctx_new">verify_ctx_new ([reqdata=nil])</a></td>
+	<td class="summary">create ts_verify_ctx object</td>
+	</tr>
+</table>
+<h2><a href="#Class_ts_req">Class ts_req </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:export">ts_req:export ()</a></td>
+	<td class="summary">export ts_req to string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:info">ts_req:info ()</a></td>
+	<td class="summary">get info as table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:to_verify_ctx">ts_req:to_verify_ctx ()</a></td>
+	<td class="summary">create ts_verify_ctx from ts_req object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:dup">ts_req:dup ()</a></td>
+	<td class="summary">make a clone of ts_req object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:version">ts_req:version ()</a></td>
+	<td class="summary">get version</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:version">ts_req:version (version)</a></td>
+	<td class="summary">set version</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:cert_req">ts_req:cert_req ()</a></td>
+	<td class="summary">get cert_req</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:cert_req">ts_req:cert_req (cert_req)</a></td>
+	<td class="summary">set cert_req</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:nonce">ts_req:nonce ()</a></td>
+	<td class="summary">get nonce</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:nonce">ts_req:nonce (nonce)</a></td>
+	<td class="summary">set nonce</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:policy_id">ts_req:policy_id ()</a></td>
+	<td class="summary">get policy_id</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:policy_id">ts_req:policy_id (id)</a></td>
+	<td class="summary">set policy_id</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:msg_imprint">ts_req:msg_imprint ()</a></td>
+	<td class="summary">get msg_imprint</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_req:msg_imprint">ts_req:msg_imprint (data[, md_alg='sha'])</a></td>
+	<td class="summary">set msg_imprint</td>
+	</tr>
+</table>
+<h2><a href="#Class_ts_resp">Class ts_resp </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp:export">ts_resp:export ()</a></td>
+	<td class="summary">export ts_resp to string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp:dup">ts_resp:dup ()</a></td>
+	<td class="summary">duplicate ts_resp object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp:info">ts_resp:info ()</a></td>
+	<td class="summary">get info as table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp:tst_info">ts_resp:tst_info ()</a></td>
+	<td class="summary">get info as table</td>
+	</tr>
+</table>
+<h2><a href="#Class_ts_verify_ctx">Class ts_verify_ctx </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ts_verify_ctx:verify">ts_verify_ctx:verify (data)</a></td>
+	<td class="summary">verify ts_resp object, pkcs7 token or ts_resp data</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_verify_ctx:store">ts_verify_ctx:store ()</a></td>
+	<td class="summary">get stack_of_x509 cacerts</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_verify_ctx:store">ts_verify_ctx:store (cacerts)</a></td>
+	<td class="summary">set stack_of_x509 cacerts</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_verify_ctx:flags">ts_verify_ctx:flags ()</a></td>
+	<td class="summary">get flags</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_verify_ctx:flags">ts_verify_ctx:flags (flags)</a></td>
+	<td class="summary">set flags</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_verify_ctx:certs">ts_verify_ctx:certs ()</a></td>
+	<td class="summary">get untrust certs</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_verify_ctx:certs">ts_verify_ctx:certs (untrust)</a></td>
+	<td class="summary">set untrust certs</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_verify_ctx:data">ts_verify_ctx:data ()</a></td>
+	<td class="summary">get data</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_verify_ctx:data">ts_verify_ctx:data (data)</a></td>
+	<td class="summary">set data</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_verify_ctx:imprint">ts_verify_ctx:imprint ()</a></td>
+	<td class="summary">get imprint</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_verify_ctx:imprint">ts_verify_ctx:imprint (imprint)</a></td>
+	<td class="summary">set imprint</td>
+	</tr>
+</table>
+<h2><a href="#Class_ts_resp_ctx">Class ts_resp_ctx </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:signer">ts_resp_ctx:signer ()</a></td>
+	<td class="summary">get signer cert and pkey</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:signer">ts_resp_ctx:signer (cert, pkey)</a></td>
+	<td class="summary">set signer cert and pkey</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:certs">ts_resp_ctx:certs ()</a></td>
+	<td class="summary">get additional certs</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:certs">ts_resp_ctx:certs (certs)</a></td>
+	<td class="summary">set additional certs</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:flags">ts_resp_ctx:flags ()</a></td>
+	<td class="summary">get flags</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:flags">ts_resp_ctx:flags (flags)</a></td>
+	<td class="summary">set flags</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:policies">ts_resp_ctx:policies ()</a></td>
+	<td class="summary">get policies</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:policies">ts_resp_ctx:policies (policies)</a></td>
+	<td class="summary">set policies</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:accuracy">ts_resp_ctx:accuracy ()</a></td>
+	<td class="summary">get accuracy</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:accuracy">ts_resp_ctx:accuracy (seconds, millis, micros)</a></td>
+	<td class="summary">set accuracy</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:clock_precision_digits">ts_resp_ctx:clock_precision_digits ()</a></td>
+	<td class="summary">get clock_precision_digits</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:clock_precision_digits">ts_resp_ctx:clock_precision_digits (clock_precision_digits)</a></td>
+	<td class="summary">set clock_precision_digits</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:set_status_info">ts_resp_ctx:set_status_info (status, text)</a></td>
+	<td class="summary">set status info</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:set_status_info_cond">ts_resp_ctx:set_status_info_cond (status, text)</a></td>
+	<td class="summary">set status info cond</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:add_failure_info">ts_resp_ctx:add_failure_info (failure)</a></td>
+	<td class="summary">add failure info</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:md">ts_resp_ctx:md ()</a></td>
+	<td class="summary">get all digest method</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:md">ts_resp_ctx:md (mds)</a></td>
+	<td class="summary">set support digest method</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:md">ts_resp_ctx:md (md_alg)</a></td>
+	<td class="summary">add digest</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:tst_info">ts_resp_ctx:tst_info ()</a></td>
+	<td class="summary">get tst_info as table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:request">ts_resp_ctx:request ()</a></td>
+	<td class="summary">get ts_req object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:set_serial_cb">ts_resp_ctx:set_serial_cb (serial_cb)</a></td>
+	<td class="summary">set serial generate callback function</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:set_serial_cb">ts_resp_ctx:set_serial_cb (time_cb)</a></td>
+	<td class="summary">set time callback function</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:create_response">ts_resp_ctx:create_response (data)</a></td>
+	<td class="summary">create response for ts_req</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ts_resp_ctx:sign">ts_resp_ctx:sign (data)</a></td>
+	<td class="summary">sign ts_req and get ts_resp, alias of create_response</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "req_new"></a>
+    <strong>req_new ([version=1])</strong>
+    </dt>
+    <dd>
+    create a new ts_req object.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">version</span>
+            <span class="types"><span class="type">integer</span></span>
+
+         (<em>default</em> 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">ts_req</span></span>
+        timestamp sign request object
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/ts.html#ts_req">ts_req</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "req_read"></a>
+    <strong>req_read (input)</strong>
+    </dt>
+    <dd>
+    read ts_req object from string or bio data
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bio</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">ts_req</span></span>
+        timestamp sign request object
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/ts.html#ts_req">ts_req</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "resp_read"></a>
+    <strong>resp_read (input)</strong>
+    </dt>
+    <dd>
+    read ts_resp object from string or bio input
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bio</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">ts_resp</span></span>
+        object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "resp_ctx_new"></a>
+    <strong>resp_ctx_new ([signer[, pkey[, identity]]])</strong>
+    </dt>
+    <dd>
+    create ts_resp_ctx object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">signer</span>
+            <span class="types"><span class="type">x509</span></span>
+         timestamp certificate
+        </li>
+        <li><span class="parameter">pkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         private key to sign ts_req
+        </li>
+        <li><span class="parameter">identity</span>
+            <span class="types"><span class="type">asn1_object</span>, <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">nid</span></span>
+         for default policy object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">ts_resp_ctx</span></span>
+        object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "verify_ctx_new"></a>
+    <strong>verify_ctx_new ([reqdata=nil])</strong>
+    </dt>
+    <dd>
+    create ts_verify_ctx object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">reqdata</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">ts_req</span></span>
+
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">ts_verify_ctx</span></span>
+        object
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_ts_req"></a>Class ts_req </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ts_req:export"></a>
+    <strong>ts_req:export ()</strong>
+    </dt>
+    <dd>
+    export ts_req to string
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:info"></a>
+    <strong>ts_req:info ()</strong>
+    </dt>
+    <dd>
+    get info as table
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:to_verify_ctx"></a>
+    <strong>ts_req:to_verify_ctx ()</strong>
+    </dt>
+    <dd>
+    create ts_verify_ctx from ts_req object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">ts_verify_ctx</span></span>
+        object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:dup"></a>
+    <strong>ts_req:dup ()</strong>
+    </dt>
+    <dd>
+    make a clone of ts_req object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">ts_req</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:version"></a>
+    <strong>ts_req:version ()</strong>
+    </dt>
+    <dd>
+    get version
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">integer</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:version"></a>
+    <strong>ts_req:version (version)</strong>
+    </dt>
+    <dd>
+    set version
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">version</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:cert_req"></a>
+    <strong>ts_req:cert_req ()</strong>
+    </dt>
+    <dd>
+    get cert_req
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true for set or not
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:cert_req"></a>
+    <strong>ts_req:cert_req (cert_req)</strong>
+    </dt>
+    <dd>
+    set cert_req
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cert_req</span>
+            <span class="types"><span class="type">boolean</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:nonce"></a>
+    <strong>ts_req:nonce ()</strong>
+    </dt>
+    <dd>
+    get nonce
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bn</span></span>
+        openssl.bn object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:nonce"></a>
+    <strong>ts_req:nonce (nonce)</strong>
+    </dt>
+    <dd>
+    set nonce
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">nonce</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bn</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:policy_id"></a>
+    <strong>ts_req:policy_id ()</strong>
+    </dt>
+    <dd>
+    get policy_id
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">asn1_object</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:policy_id"></a>
+    <strong>ts_req:policy_id (id)</strong>
+    </dt>
+    <dd>
+    set policy_id
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">asn1_object</span> or <span class="type">number</span></span>
+          identity for asn1_object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:msg_imprint"></a>
+    <strong>ts_req:msg_imprint ()</strong>
+    </dt>
+    <dd>
+    get msg_imprint
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        octet octet string</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        with algorithm and paramater</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_req:msg_imprint"></a>
+    <strong>ts_req:msg_imprint (data[, md_alg='sha'])</strong>
+    </dt>
+    <dd>
+    set msg_imprint
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         digest value of message
+        </li>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">evp_md</span></span>
+
+         (<em>default</em> 'sha')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_ts_resp"></a>Class ts_resp </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ts_resp:export"></a>
+    <strong>ts_resp:export ()</strong>
+    </dt>
+    <dd>
+    export ts_resp to string
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp:dup"></a>
+    <strong>ts_resp:dup ()</strong>
+    </dt>
+    <dd>
+    duplicate ts_resp object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">ts_resp</span></span>
+        object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp:info"></a>
+    <strong>ts_resp:info ()</strong>
+    </dt>
+    <dd>
+    get info as table
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp:tst_info"></a>
+    <strong>ts_resp:tst_info ()</strong>
+    </dt>
+    <dd>
+    get info as table
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_ts_verify_ctx"></a>Class ts_verify_ctx </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ts_verify_ctx:verify"></a>
+    <strong>ts_verify_ctx:verify (data)</strong>
+    </dt>
+    <dd>
+    verify ts_resp object, pkcs7 token or ts_resp data
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><span class="type">ts_resp</span>, <span class="type">pkcs7</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_verify_ctx:store"></a>
+    <strong>ts_verify_ctx:store ()</strong>
+    </dt>
+    <dd>
+    get stack_of_x509 cacerts
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">stack_of_x509</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_verify_ctx:store"></a>
+    <strong>ts_verify_ctx:store (cacerts)</strong>
+    </dt>
+    <dd>
+    set stack_of_x509 cacerts
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cacerts</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_verify_ctx:flags"></a>
+    <strong>ts_verify_ctx:flags ()</strong>
+    </dt>
+    <dd>
+    get flags
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">integer</span></span>
+        flags
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_verify_ctx:flags"></a>
+    <strong>ts_verify_ctx:flags (flags)</strong>
+    </dt>
+    <dd>
+    set flags
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_verify_ctx:certs"></a>
+    <strong>ts_verify_ctx:certs ()</strong>
+    </dt>
+    <dd>
+    get untrust certs
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">stack_of_x509</span></span>
+        untrust
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_verify_ctx:certs"></a>
+    <strong>ts_verify_ctx:certs (untrust)</strong>
+    </dt>
+    <dd>
+    set untrust certs
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">untrust</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_verify_ctx:data"></a>
+    <strong>ts_verify_ctx:data ()</strong>
+    </dt>
+    <dd>
+    get data
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bio</span></span>
+        data object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_verify_ctx:data"></a>
+    <strong>ts_verify_ctx:data (data)</strong>
+    </dt>
+    <dd>
+    set data
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><span class="type">bio</span></span>
+         object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_verify_ctx:imprint"></a>
+    <strong>ts_verify_ctx:imprint ()</strong>
+    </dt>
+    <dd>
+    get imprint
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        imprint
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_verify_ctx:imprint"></a>
+    <strong>ts_verify_ctx:imprint (imprint)</strong>
+    </dt>
+    <dd>
+    set imprint
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">imprint</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_ts_resp_ctx"></a>Class ts_resp_ctx </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ts_resp_ctx:signer"></a>
+    <strong>ts_resp_ctx:signer ()</strong>
+    </dt>
+    <dd>
+    get signer cert and pkey
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">x509</span></span>
+        cert object or nil</li>
+        <li>
+           <span class="types"><span class="type">evp_pkey</span></span>
+        pkey object or nil</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:signer"></a>
+    <strong>ts_resp_ctx:signer (cert, pkey)</strong>
+    </dt>
+    <dd>
+    set signer cert and pkey
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cert</span>
+            <span class="types"><span class="type">x509</span></span>
+         signer cert
+        </li>
+        <li><span class="parameter">pkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         signer pkey
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:certs"></a>
+    <strong>ts_resp_ctx:certs ()</strong>
+    </dt>
+    <dd>
+    get additional certs
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">stack_of_x509</span></span>
+        certs object or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:certs"></a>
+    <strong>ts_resp_ctx:certs (certs)</strong>
+    </dt>
+    <dd>
+    set additional certs
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">certs</span>
+            <span class="types"><span class="type">stack_of_x509</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:flags"></a>
+    <strong>ts_resp_ctx:flags ()</strong>
+    </dt>
+    <dd>
+    get flags
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">integer</span></span>
+        flags
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:flags"></a>
+    <strong>ts_resp_ctx:flags (flags)</strong>
+    </dt>
+    <dd>
+    set flags
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:policies"></a>
+    <strong>ts_resp_ctx:policies ()</strong>
+    </dt>
+    <dd>
+    get policies
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">stack_of_asn1_object</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:policies"></a>
+    <strong>ts_resp_ctx:policies (policies)</strong>
+    </dt>
+    <dd>
+    set policies
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">policies</span>
+            <span class="types"><span class="type">asn1_object</span>, <span class="type">integer</span> or <span class="type">stack_of_asn1_object</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:accuracy"></a>
+    <strong>ts_resp_ctx:accuracy ()</strong>
+    </dt>
+    <dd>
+    get accuracy
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">integer</span></span>
+        seconds</li>
+        <li>
+           <span class="types"><span class="type">integer</span></span>
+        millis</li>
+        <li>
+           <span class="types"><span class="type">integer</span></span>
+        micros</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:accuracy"></a>
+    <strong>ts_resp_ctx:accuracy (seconds, millis, micros)</strong>
+    </dt>
+    <dd>
+    set accuracy
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">seconds</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+        <li><span class="parameter">millis</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+        <li><span class="parameter">micros</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:clock_precision_digits"></a>
+    <strong>ts_resp_ctx:clock_precision_digits ()</strong>
+    </dt>
+    <dd>
+    get clock_precision_digits
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">integer</span></span>
+        clock_precision_digits
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:clock_precision_digits"></a>
+    <strong>ts_resp_ctx:clock_precision_digits (clock_precision_digits)</strong>
+    </dt>
+    <dd>
+    set clock_precision_digits
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">clock_precision_digits</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:set_status_info"></a>
+    <strong>ts_resp_ctx:set_status_info (status, text)</strong>
+    </dt>
+    <dd>
+    set status info
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">status</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:set_status_info_cond"></a>
+    <strong>ts_resp_ctx:set_status_info_cond (status, text)</strong>
+    </dt>
+    <dd>
+    set status info cond
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">status</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:add_failure_info"></a>
+    <strong>ts_resp_ctx:add_failure_info (failure)</strong>
+    </dt>
+    <dd>
+    add failure info
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">failure</span>
+            <span class="types"><span class="type">integer</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">result</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:md"></a>
+    <strong>ts_resp_ctx:md ()</strong>
+    </dt>
+    <dd>
+    get all digest method
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        contains all support digest method
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:md"></a>
+    <strong>ts_resp_ctx:md (mds)</strong>
+    </dt>
+    <dd>
+    set support digest method
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mds</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         support digest method
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:md"></a>
+    <strong>ts_resp_ctx:md (md_alg)</strong>
+    </dt>
+    <dd>
+    add digest
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">md_alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">evp_digest</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:tst_info"></a>
+    <strong>ts_resp_ctx:tst_info ()</strong>
+    </dt>
+    <dd>
+    get tst_info as table
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        tst_info
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:request"></a>
+    <strong>ts_resp_ctx:request ()</strong>
+    </dt>
+    <dd>
+    get ts_req object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">rs_req</span></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:set_serial_cb"></a>
+    <strong>ts_resp_ctx:set_serial_cb (serial_cb)</strong>
+    </dt>
+    <dd>
+    set serial generate callback function
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">serial_cb</span>
+            <span class="types"><span class="type">function</span></span>
+         serial_cb with proto funciont(ts_resp_ctx, arg) return openssl.bn end
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  <span class="keyword">function</span> serial_cb(tsa,arg)
+    <span class="keyword">local</span> bn = ...
+    <span class="keyword">return</span> bn
+  <span class="keyword">end</span>
+  <span class="keyword">local</span> arg = {}
+ ts_resp_ctx:set_serial_cb(serial_cb, arg)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:set_serial_cb"></a>
+    <strong>ts_resp_ctx:set_serial_cb (time_cb)</strong>
+    </dt>
+    <dd>
+    set time callback function
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">time_cb</span>
+            <span class="types"><span class="type">function</span></span>
+         serial_cb with proto funciont(ts_resp_ctx, arg) return sec, usec end
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  <span class="keyword">function</span> time_cb(tsa,arg)
+    <span class="keyword">local</span> time = <span class="global">os</span>.time()
+    <span class="keyword">local</span> utime = <span class="keyword">nil</span>
+    <span class="keyword">return</span> time,utime
+  <span class="keyword">end</span>
+  <span class="keyword">local</span> arg = {}
+ ts_resp_ctx:set_time_cb(time_cb, arg)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:create_response"></a>
+    <strong>ts_resp_ctx:create_response (data)</strong>
+    </dt>
+    <dd>
+    create response for ts_req
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">bio</span> or <span class="type">ts_req</span></span>
+         support string,bio ts_req content or ts_req object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">ts_resp</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ts_resp_ctx:sign"></a>
+    <strong>ts_resp_ctx:sign (data)</strong>
+    </dt>
+    <dd>
+    sign ts_req and get ts_resp, alias of create_response
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">bio</span> or <span class="type">ts_req</span></span>
+         support string,bio ts_req content or ts_req object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">ts_resp</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

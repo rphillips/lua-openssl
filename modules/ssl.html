@@ -1,0 +1,1206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_ssl_ctx">Class ssl_ctx </a></li>
+<li><a href="#Class_ssl">Class ssl </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><strong>ssl</strong></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>ssl</code></h1>
+<p>Provide ssl function in lua.</p>
+<p></p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  hamc = require(&apos;openssl&apos;).ssl
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ctx_new">ctx_new (protocol[, support_ciphers])</a></td>
+	<td class="summary">create ssl_ctx object, which mapping to SSL_CTX in openssl.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#alert_string">alert_string (alert[, long=false])</a></td>
+	<td class="summary">get alert_string for ssl state</td>
+	</tr>
+</table>
+<h2><a href="#Class_ssl_ctx">Class ssl_ctx </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:used">ssl_ctx:used (pkey, cert)</a></td>
+	<td class="summary">tell ssl_ctx use private key and certificate, and check private key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:add">ssl_ctx:add (clientca, extra_chain_cert_array)</a></td>
+	<td class="summary">add client ca cert and option extra chain cert</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:set_tmp">ssl_ctx:set_tmp (keytype, tmp_cb[, vararg])</a></td>
+	<td class="summary">set temp callback</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:set_tmp">ssl_ctx:set_tmp (keytype, key_pem)</a></td>
+	<td class="summary">set tmp key content pem format</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:set_tmp">ssl_ctx:set_tmp (keytype, curvename)</a></td>
+	<td class="summary">set ecdh with given curvename as tmp key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:mode">ssl_ctx:mode (clear, mode[, ...])</a></td>
+	<td class="summary">clean given mode
+ mode support 'enable_partial_write','accept_moving_write_buffer','auto_retry','no_auto_chain','release_buffers'</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:options">ssl_ctx:options (option, new)</a></td>
+	<td class="summary">set options</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:options">ssl_ctx:options (clear, option, new)</a></td>
+	<td class="summary">clear options</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:timeout">ssl_ctx:timeout ()</a></td>
+	<td class="summary">get timeout</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:timeout">ssl_ctx:timeout (timeout)</a></td>
+	<td class="summary">set timeout</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:verify_mode">ssl_ctx:verify_mode ()</a></td>
+	<td class="summary">get verify mode</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx.mode">ssl_ctx.mode</a></td>
+	<td class="summary">set verify mode</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:quiet_shutdown">ssl_ctx:quiet_shutdown ()</a></td>
+	<td class="summary">get quit_shutdown is set or not
+ Normally when a SSL connection is finished, the parties must send out
+ "close notify" alert messages using ***SSL:shutdown"*** for a clean shutdown.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:quiet_shutdown">ssl_ctx:quiet_shutdown (quiet)</a></td>
+	<td class="summary">set quiet_shutdown</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:verify_locations">ssl_ctx:verify_locations (cafile, capath)</a></td>
+	<td class="summary">set verify locations with cafile and capath
+ ssl_ctx:verify_locations specifies the locations for *ctx*, at
+ which CA certificates for verification purposes are located.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:cert_store">ssl_ctx:cert_store ()</a></td>
+	<td class="summary">get certificate verification store of ssl_ctx</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:cert_store">ssl_ctx:cert_store (store)</a></td>
+	<td class="summary">set or replaces then certificate verification store of ssl_ctx</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:verify_depth">ssl_ctx:verify_depth ()</a></td>
+	<td class="summary">get verify depth when cert chain veirition</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:verify_depth">ssl_ctx:verify_depth (depth)</a></td>
+	<td class="summary">set verify depth when cert chain veirition</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:verify_mode">ssl_ctx:verify_mode ()</a></td>
+	<td class="summary">get verify_mode</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:set_verify">ssl_ctx:set_verify (mode[, verifycb=nil])</a></td>
+	<td class="summary">set verify call back</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:bio">ssl_ctx:bio (host_addr[, server=true[, autoretry=true]])</a></td>
+	<td class="summary">create bio and ssl object</td>
+	</tr>
+</table>
+<h2><a href="#Class_ssl">Class ssl </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ssl:want">ssl:want ()</a></td>
+	<td class="summary">get want to do</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl:cipher">ssl:cipher ()</a></td>
+	<td class="summary">get cipher info of current session</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl:pending">ssl:pending ()</a></td>
+	<td class="summary">get number of bytes available inside SSL fro immediate read
+ treturn number</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl:ctx">ssl:ctx ()</a></td>
+	<td class="summary">get ssl_ctx object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl:ctx">ssl:ctx (ctx)</a></td>
+	<td class="summary">set new ssl_ctx object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl:shutdown">ssl:shutdown ()</a></td>
+	<td class="summary">shutdown SSL connection</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl:shutdown">ssl:shutdown (mode)</a></td>
+	<td class="summary">shutdown ssl connect with special mode, disable read or write,
+ enable or disable quite shutdown</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl:shutdown">ssl:shutdown (mode)</a></td>
+	<td class="summary">shutdown ssl connection with quite or noquite mode</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl:get">ssl:get (arg)</a></td>
+	<td class="summary">get value according to what, arg can be list, arg must be in below list</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl:set">ssl:set (arg, value)</a></td>
+	<td class="summary">set value according to what, arg can be list, arg must be in below list</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "ctx_new"></a>
+    <strong>ctx_new (protocol[, support_ciphers])</strong>
+    </dt>
+    <dd>
+    create ssl_ctx object, which mapping to SSL_CTX in openssl.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">protocol</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         support 'SSLv3', 'SSLv23', 'SSLv2', 'TSLv1', 'DTLSv1', and can be follow by '-server' or '-client'
+        </li>
+        <li><span class="parameter">support_ciphers</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , if not given, default of openssl will be used
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/ssl.html#ssl">ssl_ctx</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "alert_string"></a>
+    <strong>alert_string (alert[, long=false])</strong>
+    </dt>
+    <dd>
+    get alert_string for ssl state
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alert</span>
+            <span class="types"><span class="type">number</span></span>
+
+        </li>
+        <li><span class="parameter">long</span>
+            <span class="types"><span class="type">boolean</span></span>
+
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        alert type</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        desc string, if long set true will return long info</li>
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_ssl_ctx"></a>Class ssl_ctx </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ssl_ctx:used"></a>
+    <strong>ssl_ctx:used (pkey, cert)</strong>
+    </dt>
+    <dd>
+    tell ssl_ctx use private key and certificate, and check private key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+
+        </li>
+        <li><span class="parameter">cert</span>
+            <span class="types"><span class="type">x509</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">boolean</span></span>
+        result return true for ok, or nil follow by errmsg and errval</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        errmsg</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        errval</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:add"></a>
+    <strong>ssl_ctx:add (clientca, extra_chain_cert_array)</strong>
+    </dt>
+    <dd>
+    add client ca cert and option extra chain cert
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">clientca</span>
+            <span class="types"><span class="type">x509</span></span>
+
+        </li>
+        <li><span class="parameter">extra_chain_cert_array</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:set_tmp"></a>
+    <strong>ssl_ctx:set_tmp (keytype, tmp_cb[, vararg])</strong>
+    </dt>
+    <dd>
+    set temp callback
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keytype</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , 'dh','ecdh',or 'rsa'
+        </li>
+        <li><span class="parameter">tmp_cb</span>
+            <span class="types"><span class="type">function</span></span>
+
+        </li>
+        <li><span class="parameter">vararg</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:set_tmp"></a>
+    <strong>ssl_ctx:set_tmp (keytype, key_pem)</strong>
+    </dt>
+    <dd>
+    set tmp key content pem format
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keytype</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , 'dh','ecdh',or 'rsa'
+        </li>
+        <li><span class="parameter">key_pem</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:set_tmp"></a>
+    <strong>ssl_ctx:set_tmp (keytype, curvename)</strong>
+    </dt>
+    <dd>
+    set ecdh with given curvename as tmp key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keytype</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , must be 'ecdh'
+        </li>
+        <li><span class="parameter">curvename</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:mode"></a>
+    <strong>ssl_ctx:mode (clear, mode[, ...])</strong>
+    </dt>
+    <dd>
+    clean given mode
+ mode support 'enable_partial_write','accept_moving_write_buffer','auto_retry','no_auto_chain','release_buffers'
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">clear</span>
+            <span class="types"><span class="type">boolean</span></span>
+         must be true
+        </li>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">...</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        </li>
+        <li>
+           <span class="types"><span class="type">...</span></span>
+        </li>
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  modes = { ssl_ctx:mode(<span class="string">'enable_partial_write'</span>,<span class="string">'accept_moving_write_buffer'</span>,<span class="string">'auto_retry'</span>) },
+
+   <span class="keyword">for</span>  i, v <span class="keyword">in</span> <span class="global">ipairs</span>(modes)
+     <span class="global">print</span>(v)
+  <span class="keyword">end</span>
+  --output <span class="string">'enable_partial_write'</span>,<span class="string">'accept_moving_write_buffer'</span>,<span class="string">'auto_retry'</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:options"></a>
+    <strong>ssl_ctx:options (option, new)</strong>
+    </dt>
+    <dd>
+    set options
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">option</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , support "microsoft_sess_id_bug", "netscape_challenge_bug", "netscape_reuse_cipher_change_bug",
+ "sslref2_reuse_cert_type_bug", "microsoft_big_sslv3_buffer", "msie_sslv3_rsa_padding","ssleay_080_client_dh_bug",
+ "tls_d5_bug","tls_block_padding_bug","dont_insert_empty_fragments","all",
+        </li>
+        <li><span class="parameter">new</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         options list
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:options"></a>
+    <strong>ssl_ctx:options (clear, option, new)</strong>
+    </dt>
+    <dd>
+    clear options
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">clear</span>
+            <span class="types"><span class="type">boolean</span></span>
+         set true to clear options
+        </li>
+        <li><span class="parameter">option</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , support "microsoft_sess_id_bug", "netscape_challenge_bug", "netscape_reuse_cipher_change_bug",
+ "sslref2_reuse_cert_type_bug", "microsoft_big_sslv3_buffer", "msie_sslv3_rsa_padding","ssleay_080_client_dh_bug",
+ "tls_d5_bug","tls_block_padding_bug","dont_insert_empty_fragments","all",
+        </li>
+        <li><span class="parameter">new</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         options list
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:timeout"></a>
+    <strong>ssl_ctx:timeout ()</strong>
+    </dt>
+    <dd>
+    get timeout
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:timeout"></a>
+    <strong>ssl_ctx:timeout (timeout)</strong>
+    </dt>
+    <dd>
+    set timeout
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">timeout</span>
+            <span class="types"><span class="type">number</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        previous timeout
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:verify_mode"></a>
+    <strong>ssl_ctx:verify_mode ()</strong>
+    </dt>
+    <dd>
+    get verify mode
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        'none','peer','fail' or 'once'
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx.mode"></a>
+    <strong>ssl_ctx.mode</strong>
+    </dt>
+    <dd>
+    set verify mode
+
+
+    <ul>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         must be in "none", "peer", "fail", "once"
+ you can pass more than one mode at same time
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:quiet_shutdown"></a>
+    <strong>ssl_ctx:quiet_shutdown ()</strong>
+    </dt>
+    <dd>
+    get quit_shutdown is set or not
+ Normally when a SSL connection is finished, the parties must send out
+ "close notify" alert messages using ***SSL:shutdown"*** for a clean shutdown.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:quiet_shutdown"></a>
+    <strong>ssl_ctx:quiet_shutdown (quiet)</strong>
+    </dt>
+    <dd>
+    set quiet_shutdown
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">quiet</span>
+            <span class="types"><span class="type">boolean</span></span>
+
+ When setting the "quiet shutdown" flag to 1, ***SSL:shutdown*** will set the internal flags
+ to SSL_SENT_SHUTDOWN|SSL_RECEIVED_SHUTDOWN. ***SSL:shutdown*** then behaves like
+ ***SSL:set_shutdown*** called with SSL_SENT_SHUTDOWN|SSL_RECEIVED_SHUTDOWN.
+ The session is thus considered to be shutdown, but no "close notify" alert
+ is sent to the peer. This behaviour violates the TLS standard.
+ The default is normal shutdown behaviour as described by the TLS standard.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:verify_locations"></a>
+    <strong>ssl_ctx:verify_locations (cafile, capath)</strong>
+    </dt>
+    <dd>
+    set verify locations with cafile and capath
+ ssl_ctx:verify_locations specifies the locations for *ctx*, at
+ which CA certificates for verification purposes are located.  The certificates
+ available via *CAfile* and *CApath* are trusted.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cafile</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+        <li><span class="parameter">capath</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:cert_store"></a>
+    <strong>ssl_ctx:cert_store ()</strong>
+    </dt>
+    <dd>
+    get certificate verification store of ssl_ctx
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_store</span></span>
+        store
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:cert_store"></a>
+    <strong>ssl_ctx:cert_store (store)</strong>
+    </dt>
+    <dd>
+    set or replaces then certificate verification store of ssl_ctx
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">store</span>
+            <span class="types"><span class="type">x509_store</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_store</span></span>
+        store
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:verify_depth"></a>
+    <strong>ssl_ctx:verify_depth ()</strong>
+    </dt>
+    <dd>
+    get verify depth when cert chain veirition
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        depth
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:verify_depth"></a>
+    <strong>ssl_ctx:verify_depth (depth)</strong>
+    </dt>
+    <dd>
+    set verify depth when cert chain veirition
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">depth</span>
+            <span class="types"><span class="type">number</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        depth
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:verify_mode"></a>
+    <strong>ssl_ctx:verify_mode ()</strong>
+    </dt>
+    <dd>
+    get verify_mode
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        mode_code</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         mode_string
+  none: not verify client cert
+  peer: verify client cert
+  fail: if client not have cert, will failure
+  once: verify client only once.</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:set_verify"></a>
+    <strong>ssl_ctx:set_verify (mode[, verifycb=nil])</strong>
+    </dt>
+    <dd>
+    set verify call back
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , must be 'none' or 'peer'
+        </li>
+        <li><span class="parameter">verifycb</span>
+            <span class="types"><span class="type">function</span></span>
+         if mode is 'none', not need this
+ verifycb should like int function(int preverify_ok,X509_STORE_CTX ctx) return 0 to end,1 to continue
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:bio"></a>
+    <strong>ssl_ctx:bio (host_addr[, server=true[, autoretry=true]])</strong>
+    </dt>
+    <dd>
+    create bio and ssl object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">host_addr</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         format like 'host:port'
+        </li>
+        <li><span class="parameter">server</span>
+            <span class="types"><span class="type">boolean</span></span>
+        , true listen at host_addr,false connect to host_addr
+         (<em>default</em> true)
+        </li>
+        <li><span class="parameter">autoretry</span>
+            <span class="types"><span class="type">boolean</span></span>
+
+         (<em>default</em> true)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="../modules/ssl.html#ssl_ctx:bio">bio</a></span>
+        bio object</li>
+        <li>
+           <span class="types"><a class="type" href="../modules/ssl.html#ssl">ssl</a></span>
+        ssl object</li>
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_ssl"></a>Class ssl </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ssl:want"></a>
+    <strong>ssl:want ()</strong>
+    </dt>
+    <dd>
+    get want to do
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        'nothing', 'reading', 'writing', 'x509_lookup'</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        state want</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl:cipher"></a>
+    <strong>ssl:cipher ()</strong>
+    </dt>
+    <dd>
+    get cipher info of current session
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        has key include name, version,id,bits,description
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl:pending"></a>
+    <strong>ssl:pending ()</strong>
+    </dt>
+    <dd>
+    get number of bytes available inside SSL fro immediate read
+ treturn number
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl:ctx"></a>
+    <strong>ssl:ctx ()</strong>
+    </dt>
+    <dd>
+    get ssl_ctx object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/ssl.html#ssl">ssl_ctx</a></span>
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl:ctx"></a>
+    <strong>ssl:ctx (ctx)</strong>
+    </dt>
+    <dd>
+    set new ssl_ctx object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ctx</span>
+            <span class="types"><a class="type" href="../modules/ssl.html#ssl">ssl_ctx</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/ssl.html#ssl">ssl_ctx</a></span>
+        orgine ssl_ctx object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl:shutdown"></a>
+    <strong>ssl:shutdown ()</strong>
+    </dt>
+    <dd>
+    shutdown SSL connection
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl:shutdown"></a>
+    <strong>ssl:shutdown (mode)</strong>
+    </dt>
+    <dd>
+    shutdown ssl connect with special mode, disable read or write,
+ enable or disable quite shutdown
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         support 'read','write', 'quite', 'noquite'
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl:shutdown"></a>
+    <strong>ssl:shutdown (mode)</strong>
+    </dt>
+    <dd>
+    shutdown ssl connection with quite or noquite mode
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mode</span>
+            <span class="types"><span class="type">boolean</span></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        if mode is true, return true or false for quite
+    </ol>
+     <h3>Or</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        if mode is false, return 'read' or 'write' for shutdown direction
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl:get"></a>
+    <strong>ssl:get (arg)</strong>
+    </dt>
+    <dd>
+    get value according to what, arg can be list, arg must be in below list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">arg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+  certificate:  return SSL certificates
+  fd: return file or network connect fd
+  rfd:
+  wfd:
+  client_CA_list
+  read_ahead: -> boolean
+  shared_ciphers: string
+  cipher_list -> string
+  verify_mode: number
+  verify_depth
+  state_string
+  state_string_long
+  rstate_string
+  rstate_string_long
+  iversion
+  version
+  default_timeout,
+  certificates
+  verify_result
+  state
+  state_string
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        according to arg
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl:set"></a>
+    <strong>ssl:set (arg, value)</strong>
+    </dt>
+    <dd>
+    set value according to what, arg can be list, arg must be in below list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">arg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+  certificate:  return SSL certificates
+  fd: return file or network connect fd
+  rfd:
+  wfd:
+  client_CA:
+  read_ahead
+  cipher_list
+  verify_depth
+  purpose:
+  trust:
+  verify_result
+  state
+        </li>
+        <li><span class="parameter">value</span>
+         val type accroding to arg
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        value
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
